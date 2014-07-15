@@ -68,7 +68,7 @@ public class CybertronTeleporter extends Teleporter {
                         int l1 = j + j1;
                         int i2 = k + i1 * b1 - l * b0;
                         boolean flag = j1 < 0;
-                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? CybertronMod.cybertron_block : Blocks.air);
+                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? CybertronMod.cybertron_portal_frame : Blocks.air);
                     }
                 }
             }
@@ -453,7 +453,7 @@ public class CybertronTeleporter extends Teleporter {
                         i4 = j2 + k3;
                         j4 = k2 + (j3 - 1) * l2 - i3 * l5;
                         flag = k3 < 0;
-                        this.worldServerInstance.setBlock(l3, i4, j4, flag ? CybertronMod.cybertron_block : Blocks.air);
+                        this.worldServerInstance.setBlock(l3, i4, j4, flag ? CybertronMod.cybertron_portal_frame : Blocks.air);
                     }
                 }
             }
@@ -469,7 +469,7 @@ public class CybertronTeleporter extends Teleporter {
                     i4 = j2 + k3;
                     j4 = k2 + (j3 - 1) * l2;
                     flag = j3 == 0 || j3 == 3 || k3 == -1 || k3 == 3;
-                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? CybertronMod.cybertron_block : CybertronMod.cybertron_portal), 0, 2);
+                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? CybertronMod.cybertron_portal_frame : CybertronMod.cybertron_portal), 0, 2);
                 }
             }
 

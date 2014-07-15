@@ -108,11 +108,11 @@ public class CybertronPortal extends BlockBreakable {
 	{
 		byte b0 = 0;
 		byte b1 = 0;
-		if (par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_block || par1World.getBlock(par2 + 1, par3, par4) == CybertronMod.cybertron_block)
+		if (par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_portal_frame || par1World.getBlock(par2 + 1, par3, par4) == CybertronMod.cybertron_portal_frame)
 		{
 			b0 = 1;
 		}
-		if (par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.cybertron_block || par1World.getBlock(par2, par3, par4 + 1) == CybertronMod.cybertron_block)
+		if (par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.cybertron_portal_frame || par1World.getBlock(par2, par3, par4 + 1) == CybertronMod.cybertron_portal_frame)
 		{
 			b1 = 1;
 		}
@@ -139,12 +139,12 @@ public class CybertronPortal extends BlockBreakable {
 						Block j1 = par1World.getBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l);
 						if (flag)
 						{
-							if (j1 != CybertronMod.cybertron_block)
+							if (j1 != CybertronMod.cybertron_portal_frame)
 							{
 								return false;
 							}
 						}
-						else if (j1 != Blocks.air && j1 != CybertronMod.cybertron_block)
+						else if (j1 != Blocks.air && j1 != CybertronMod.cybertron_portal_frame)
 						{
 							return false;
 						}
@@ -180,7 +180,7 @@ public class CybertronPortal extends BlockBreakable {
 		{
 			
 		}
-		if (par1World.getBlock(par2, i1 - 1, par4) != CybertronMod.cybertron_block)
+		if (par1World.getBlock(par2, i1 - 1, par4) != CybertronMod.cybertron_portal_frame)
 		{
 			par1World.setBlockToAir(par2, par3, par4);
 		}
@@ -191,7 +191,7 @@ public class CybertronPortal extends BlockBreakable {
 			{
 				;
 			}
-			if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == CybertronMod.cybertron_block)
+			if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == CybertronMod.cybertron_portal_frame)
 			{
 				boolean flag = par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this;
 				boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.cybertron_portal || par1World.getBlock(par2, par3, par4 + 1) == this;
@@ -201,7 +201,7 @@ public class CybertronPortal extends BlockBreakable {
 				}
 				else
 				{
-					if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != CybertronMod.cybertron_block || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != CybertronMod.cybertron_block || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
+					if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != CybertronMod.cybertron_portal_frame || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != CybertronMod.cybertron_portal_frame || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
 					{
 						par1World.setBlockToAir(par2, par3, par4);
 					}
