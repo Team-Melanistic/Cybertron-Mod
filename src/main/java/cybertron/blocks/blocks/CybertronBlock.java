@@ -1,18 +1,18 @@
-package cybertron.blocks;
+package cybertron.blocks.blocks;
 
 import net.minecraft.block.BlockCompressed;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.world.World;
 import cybertron.CybertronMod;
 
-public class CybertronPortalFrame extends BlockCompressed {
+public class CybertronBlock extends BlockCompressed {
 
-	public CybertronPortalFrame() {
+	public CybertronBlock() {
 		super(MapColor.ironColor);
 		this.setHardness(5.0F);
 		this.setResistance(10.0F);
 		this.setStepSound(soundTypeMetal);
-		this.setBlockName("cybertronPortalFrame");
+		this.setBlockName("blockCybertron");
 		this.setBlockTextureName("iron_block");
 	}
 
