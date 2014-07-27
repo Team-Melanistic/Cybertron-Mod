@@ -10,6 +10,5 @@ public class CybertronBiome extends BiomeGenBase {
 		this.topBlock = Blocks.grass;
 		this.setBiomeName("Cybertron");
 		this.spawnableMonsterList.clear();
-		this.waterColorMultiplier = 0xE42D17;
 	}
 }

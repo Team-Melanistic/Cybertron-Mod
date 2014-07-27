@@ -7,11 +7,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import cybertron.CybertronMod;
 
-public class CybertronCrystal extends Item {
-	public CybertronCrystal() {
+public class ItemCybertronCrystal extends Item {
+	public ItemCybertronCrystal() {
 		super();
 		this.setUnlocalizedName("cybertronCrystal");
-		this.setTextureName("diamond");
+		this.setTextureName(CybertronMod.MODID + ":" + "cybertron_crystal");
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 }

@@ -17,7 +17,7 @@ import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import cybertron.CybertronMod;
 
-public class CybertronTeleporter extends Teleporter {
+public class TeleporterCybertron extends Teleporter {
     private final WorldServer worldServerInstance;
     /** A private Random() function in Teleporter */
     private final Random random;
@@ -30,7 +30,7 @@ public class CybertronTeleporter extends Teleporter {
     private final List destinationCoordinateKeys = new ArrayList();
     private static final String __OBFID = "CL_00000153";
 
-    public CybertronTeleporter(WorldServer par1WorldServer)
+    public TeleporterCybertron(WorldServer par1WorldServer)
     {
     	super(par1WorldServer);
         this.worldServerInstance = par1WorldServer;
@@ -68,7 +68,7 @@ public class CybertronTeleporter extends Teleporter {
                         int l1 = j + j1;
                         int i2 = k + i1 * b1 - l * b0;
                         boolean flag = j1 < 0;
-                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? CybertronMod.cybertron_portal_frame : Blocks.air);
+                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? CybertronMod.reinforced_concrete : Blocks.air);
                     }
                 }
             }
@@ -97,7 +97,7 @@ public class CybertronTeleporter extends Teleporter {
 
         if (this.destinationCoordinateCache.containsItem(j1))
         {
-            CybertronTeleporter.PortalPosition portalposition = (CybertronTeleporter.PortalPosition)this.destinationCoordinateCache.getValueByKey(j1);
+            TeleporterCybertron.PortalPosition portalposition = (TeleporterCybertron.PortalPosition)this.destinationCoordinateCache.getValueByKey(j1);
             d3 = 0.0D;
             i = portalposition.posX;
             j = portalposition.posY;
@@ -144,7 +144,7 @@ public class CybertronTeleporter extends Teleporter {
         {
             if (flag)
             {
-                this.destinationCoordinateCache.add(j1, new CybertronTeleporter.PortalPosition(i, j, k, this.worldServerInstance.getTotalWorldTime()));
+                this.destinationCoordinateCache.add(j1, new TeleporterCybertron.PortalPosition(i, j, k, this.worldServerInstance.getTotalWorldTime()));
                 this.destinationCoordinateKeys.add(Long.valueOf(j1));
             }
 
@@ -453,7 +453,7 @@ public class CybertronTeleporter extends Teleporter {
                         i4 = j2 + k3;
                         j4 = k2 + (j3 - 1) * l2 - i3 * l5;
                         flag = k3 < 0;
-                        this.worldServerInstance.setBlock(l3, i4, j4, flag ? CybertronMod.cybertron_portal_frame : Blocks.air);
+                        this.worldServerInstance.setBlock(l3, i4, j4, flag ? CybertronMod.reinforced_concrete : Blocks.air);
                     }
                 }
             }
@@ -469,7 +469,7 @@ public class CybertronTeleporter extends Teleporter {
                     i4 = j2 + k3;
                     j4 = k2 + (j3 - 1) * l2;
                     flag = j3 == 0 || j3 == 3 || k3 == -1 || k3 == 3;
-                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? CybertronMod.cybertron_portal_frame : CybertronMod.cybertron_portal), 0, 2);
+                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? CybertronMod.reinforced_concrete : CybertronMod.cybertron_portal), 0, 2);
                 }
             }
 
@@ -502,7 +502,7 @@ public class CybertronTeleporter extends Teleporter {
             while (iterator.hasNext())
             {
                 Long olong = (Long)iterator.next();
-                CybertronTeleporter.PortalPosition portalposition = (CybertronTeleporter.PortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
+                TeleporterCybertron.PortalPosition portalposition = (TeleporterCybertron.PortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
 
                 if (portalposition == null || portalposition.lastUpdateTime < j)
                 {

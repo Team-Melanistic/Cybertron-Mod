@@ -16,10 +16,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import cybertron.CybertronMod;
-import cybertron.dimension.CybertronTeleporter;
+import cybertron.dimension.TeleporterCybertron;
 
-public class CybertronPortal extends BlockBreakable {
-	public CybertronPortal()
+public class BlockCybertronPortal extends BlockBreakable {
+	public BlockCybertronPortal()
 	{
 		super("stone", Material.portal, false);
 		this.setTickRandomly(true);
@@ -108,11 +108,11 @@ public class CybertronPortal extends BlockBreakable {
 	{
 		byte b0 = 0;
 		byte b1 = 0;
-		if (par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_portal_frame || par1World.getBlock(par2 + 1, par3, par4) == CybertronMod.cybertron_portal_frame)
+		if (par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.reinforced_concrete || par1World.getBlock(par2 + 1, par3, par4) == CybertronMod.reinforced_concrete)
 		{
 			b0 = 1;
 		}
-		if (par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.cybertron_portal_frame || par1World.getBlock(par2, par3, par4 + 1) == CybertronMod.cybertron_portal_frame)
+		if (par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.reinforced_concrete || par1World.getBlock(par2, par3, par4 + 1) == CybertronMod.reinforced_concrete)
 		{
 			b1 = 1;
 		}
@@ -139,12 +139,12 @@ public class CybertronPortal extends BlockBreakable {
 						Block j1 = par1World.getBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l);
 						if (flag)
 						{
-							if (j1 != CybertronMod.cybertron_portal_frame)
+							if (j1 != CybertronMod.reinforced_concrete)
 							{
 								return false;
 							}
 						}
-						else if (j1 != Blocks.air && j1 != CybertronMod.cybertron_portal_frame)
+						else if (j1 != Blocks.air && j1 != CybertronMod.reinforced_concrete)
 						{
 							return false;
 						}
@@ -180,7 +180,7 @@ public class CybertronPortal extends BlockBreakable {
 		{
 			
 		}
-		if (par1World.getBlock(par2, i1 - 1, par4) != CybertronMod.cybertron_portal_frame)
+		if (par1World.getBlock(par2, i1 - 1, par4) != CybertronMod.reinforced_concrete)
 		{
 			par1World.setBlockToAir(par2, par3, par4);
 		}
@@ -191,7 +191,7 @@ public class CybertronPortal extends BlockBreakable {
 			{
 				;
 			}
-			if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == CybertronMod.cybertron_portal_frame)
+			if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == CybertronMod.reinforced_concrete)
 			{
 				boolean flag = par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this;
 				boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.cybertron_portal || par1World.getBlock(par2, par3, par4 + 1) == this;
@@ -201,7 +201,7 @@ public class CybertronPortal extends BlockBreakable {
 				}
 				else
 				{
-					if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != CybertronMod.cybertron_portal_frame || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != CybertronMod.cybertron_portal_frame || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
+					if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != CybertronMod.reinforced_concrete || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != CybertronMod.reinforced_concrete || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
 					{
 						par1World.setBlockToAir(par2, par3, par4);
 					}
@@ -260,11 +260,11 @@ public class CybertronPortal extends BlockBreakable {
 			else if (thePlayer.dimension != CybertronMod.CYBERTRON_DIMENSION_ID)
 			{
 				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, CybertronMod.CYBERTRON_DIMENSION_ID, new CybertronTeleporter(thePlayer.mcServer.worldServerForDimension(CybertronMod.CYBERTRON_DIMENSION_ID)));
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, CybertronMod.CYBERTRON_DIMENSION_ID, new TeleporterCybertron(thePlayer.mcServer.worldServerForDimension(CybertronMod.CYBERTRON_DIMENSION_ID)));
 			}
 			else {
 				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new CybertronTeleporter(thePlayer.mcServer.worldServerForDimension(0)));
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterCybertron(thePlayer.mcServer.worldServerForDimension(0)));
 			}
 		}
 	}

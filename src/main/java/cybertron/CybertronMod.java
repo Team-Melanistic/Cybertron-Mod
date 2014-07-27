@@ -10,12 +10,12 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cybertron.blocks.CybertronOre;
-import cybertron.blocks.CybertronPortal;
-import cybertron.blocks.CybertronPortalFrame;
+import cybertron.blocks.BlockCybertronOre;
+import cybertron.blocks.BlockCybertronPortal;
+import cybertron.blocks.BlockReinforcedConcrete;
 import cybertron.dimension.CybertronBiome;
-import cybertron.dimension.CybertronWorldProvider;
-import cybertron.items.CybertronCrystal;
+import cybertron.dimension.WorldProviderCybertron;
+import cybertron.items.ItemCybertronCrystal;
 
 @Mod(modid = CybertronMod.MODID, name = CybertronMod.NAME, version = CybertronMod.VERSION)
 public class CybertronMod {
@@ -26,8 +26,8 @@ public class CybertronMod {
 	public static Block cybertron_ore;
 	public static Item cybertron_crystal;
 	
-	public static CybertronPortal cybertron_portal;
-	public static Block cybertron_portal_frame;
+	public static BlockCybertronPortal cybertron_portal;
+	public static Block reinforced_concrete;
 	
 	public static BiomeGenBase cybertron_biome;
 	public static final int CYBERTRON_DIMENSION_ID = 10;
@@ -40,8 +40,8 @@ public class CybertronMod {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		cybertron_biome = new CybertronBiome();
-		registerDimension();
+		registerBiomes();
+		registerDimensions();
 	}
 	
 	@EventHandler
@@ -50,33 +50,37 @@ public class CybertronMod {
 	}
 	
 	private void registerBlocks() {
-		cybertron_ore = new CybertronOre();
+		cybertron_ore = new BlockCybertronOre();
 		GameRegistry.registerBlock(cybertron_ore, "cybertron_ore");
 		
-		cybertron_portal = new CybertronPortal();
+		cybertron_portal = new BlockCybertronPortal();
 		GameRegistry.registerBlock(cybertron_portal, "cybertron_portal");
 		
-		cybertron_portal_frame = new CybertronPortalFrame();
-		GameRegistry.registerBlock(cybertron_portal_frame, "cybertron_portal_frame");
+		reinforced_concrete = new BlockReinforcedConcrete();
+		GameRegistry.registerBlock(reinforced_concrete, "reinforced_concrete");
 	}
 	
 	private void registerItems() {
-		cybertron_crystal = new CybertronCrystal();
+		cybertron_crystal = new ItemCybertronCrystal();
 		GameRegistry.registerItem(cybertron_crystal, "cybertron_crystal");
 	}
 	
-	private void registerDimension() {
-		DimensionManager.registerProviderType(CYBERTRON_DIMENSION_ID, CybertronWorldProvider.class, false);
-		DimensionManager.registerDimension(CYBERTRON_DIMENSION_ID, CYBERTRON_DIMENSION_ID);
+	private void registerBiomes() {
+		cybertron_biome = new CybertronBiome();
 	}
 	
-	private void registerSmelting(){}
-	
-	private void registerWorldGen(){}
-	
-	private void registerTileEntity(){}
+	private void registerDimensions() {
+		DimensionManager.registerProviderType(CYBERTRON_DIMENSION_ID, WorldProviderCybertron.class, false);
+		DimensionManager.registerDimension(CYBERTRON_DIMENSION_ID, CYBERTRON_DIMENSION_ID);
+	}
 	
 	private void registerShapelessRecipes(){}
 	
 	private void registerShapedRecipes(){}
+	
+	private void registerSmeltingRecipes(){}
+	
+	private void registerWorldGenerators(){}
+	
+	private void registerTileEntities(){}
 }

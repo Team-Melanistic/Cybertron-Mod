@@ -5,17 +5,19 @@ import java.util.Random;
 import cybertron.CybertronMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class CybertronOre extends Block {
-	public CybertronOre() {
+public class BlockCybertronOre extends Block {
+	public BlockCybertronOre() {
 		super(Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(soundTypeStone);
 		this.setBlockName("oreCybertron");
-		this.setBlockTextureName("diamond_ore");
+		this.setBlockTextureName(CybertronMod.MODID + ":" + "cybertron_ore");
 		this.setHarvestLevel("pickaxe", 3);
+		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
 	@Override
