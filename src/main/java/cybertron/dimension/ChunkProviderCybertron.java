@@ -1,12 +1,5 @@
 package cybertron.dimension;
 
-import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SHROOM;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.NETHER_CAVE;
-import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.QUARTZ;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.FIRE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.GLOWSTONE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.NETHER_LAVA;
-
 import java.util.List;
 import java.util.Random;
 
@@ -25,13 +18,6 @@ import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCavesHell;
 import net.minecraft.world.gen.NoiseGenerator;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenFire;
-import net.minecraft.world.gen.feature.WorldGenFlowers;
-import net.minecraft.world.gen.feature.WorldGenGlowStone1;
-import net.minecraft.world.gen.feature.WorldGenGlowStone2;
-import net.minecraft.world.gen.feature.WorldGenHellLava;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.structure.MapGenNetherBridge;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
@@ -42,63 +28,49 @@ import cybertron.CybertronMod;
 
 public class ChunkProviderCybertron implements IChunkProvider
 {
-    private Random hellRNG;
-    /** A NoiseGeneratorOctaves used in generating nether terrain */
-    private NoiseGeneratorOctaves netherNoiseGen1;
-    private NoiseGeneratorOctaves netherNoiseGen2;
-    private NoiseGeneratorOctaves netherNoiseGen3;
-    /** Determines whether slowsand or gravel can be generated at a location */
-    private NoiseGeneratorOctaves slowsandGravelNoiseGen;
+    private Random cybertronRNG;
+    /** A NoiseGeneratorOctaves used in generating cybertron terrain */
+    private NoiseGeneratorOctaves cybertronNoiseGen1;
+    private NoiseGeneratorOctaves cybertronNoiseGen2;
+    private NoiseGeneratorOctaves cybertronNoiseGen3;
     /**
-     * Determines whether something other than nettherack can be generated at a location
+     * Determines whether something other than reinforced concrete can be generated at a location
      */
-    private NoiseGeneratorOctaves netherrackExculsivityNoiseGen;
-    public NoiseGeneratorOctaves netherNoiseGen6;
-    public NoiseGeneratorOctaves netherNoiseGen7;
-    /** Is the world that the nether is getting generated. */
+    private NoiseGeneratorOctaves concreteExculsivityNoiseGen;
+    public NoiseGeneratorOctaves cybertronNoiseGen6;
+    public NoiseGeneratorOctaves cybertronNoiseGen7;
+    /** Is the world that cybertron is getting generated. */
     private World worldObj;
     private double[] noiseField;
     /**
-     * Holds the noise used to determine whether slowsand can be generated at a location
+     * Holds the noise used to determine whether something other than reinforced concrete can be generated at a location
      */
-    private double[] slowsandNoise = new double[256];
-    private double[] gravelNoise = new double[256];
-    /**
-     * Holds the noise used to determine whether something other than netherrack can be generated at a location
-     */
-    private double[] netherrackExclusivityNoise = new double[256];
-    private MapGenBase netherCaveGenerator = new MapGenCavesHell();
+    private double[] concreteExclusivityNoise = new double[256];
     double[] noiseData1;
     double[] noiseData2;
     double[] noiseData3;
     double[] noiseData4;
     double[] noiseData5;
 
-    {
-        netherCaveGenerator = TerrainGen.getModdedMapGen(netherCaveGenerator, NETHER_CAVE);
-    }
-
     public ChunkProviderCybertron(World par1World, long par2)
     {
         this.worldObj = par1World;
-        this.hellRNG = new Random(par2);
-        this.netherNoiseGen1 = new NoiseGeneratorOctaves(this.hellRNG, 16);
-        this.netherNoiseGen2 = new NoiseGeneratorOctaves(this.hellRNG, 16);
-        this.netherNoiseGen3 = new NoiseGeneratorOctaves(this.hellRNG, 8);
-        this.slowsandGravelNoiseGen = new NoiseGeneratorOctaves(this.hellRNG, 4);
-        this.netherrackExculsivityNoiseGen = new NoiseGeneratorOctaves(this.hellRNG, 4);
-        this.netherNoiseGen6 = new NoiseGeneratorOctaves(this.hellRNG, 10);
-        this.netherNoiseGen7 = new NoiseGeneratorOctaves(this.hellRNG, 16);
+        this.cybertronRNG = new Random(par2);
+        this.cybertronNoiseGen1 = new NoiseGeneratorOctaves(this.cybertronRNG, 16);
+        this.cybertronNoiseGen2 = new NoiseGeneratorOctaves(this.cybertronRNG, 16);
+        this.cybertronNoiseGen3 = new NoiseGeneratorOctaves(this.cybertronRNG, 8);
+        this.concreteExculsivityNoiseGen = new NoiseGeneratorOctaves(this.cybertronRNG, 4);
+        this.cybertronNoiseGen6 = new NoiseGeneratorOctaves(this.cybertronRNG, 10);
+        this.cybertronNoiseGen7 = new NoiseGeneratorOctaves(this.cybertronRNG, 16);
 
-        NoiseGenerator[] noiseGens = {netherNoiseGen1, netherNoiseGen2, netherNoiseGen3, slowsandGravelNoiseGen, netherrackExculsivityNoiseGen, netherNoiseGen6, netherNoiseGen7};
-        noiseGens = TerrainGen.getModdedNoiseGenerators(par1World, this.hellRNG, noiseGens);
-        this.netherNoiseGen1 = (NoiseGeneratorOctaves)noiseGens[0];
-        this.netherNoiseGen2 = (NoiseGeneratorOctaves)noiseGens[1];
-        this.netherNoiseGen3 = (NoiseGeneratorOctaves)noiseGens[2];
-        this.slowsandGravelNoiseGen = (NoiseGeneratorOctaves)noiseGens[3];
-        this.netherrackExculsivityNoiseGen = (NoiseGeneratorOctaves)noiseGens[4];
-        this.netherNoiseGen6 = (NoiseGeneratorOctaves)noiseGens[5];
-        this.netherNoiseGen7 = (NoiseGeneratorOctaves)noiseGens[6];
+        NoiseGenerator[] noiseGens = {cybertronNoiseGen1, cybertronNoiseGen2, cybertronNoiseGen3, concreteExculsivityNoiseGen, cybertronNoiseGen6, cybertronNoiseGen7};
+        noiseGens = TerrainGen.getModdedNoiseGenerators(par1World, this.cybertronRNG, noiseGens);
+        this.cybertronNoiseGen1 = (NoiseGeneratorOctaves)noiseGens[0];
+        this.cybertronNoiseGen2 = (NoiseGeneratorOctaves)noiseGens[1];
+        this.cybertronNoiseGen3 = (NoiseGeneratorOctaves)noiseGens[2];
+        this.concreteExculsivityNoiseGen = (NoiseGeneratorOctaves)noiseGens[3];
+        this.cybertronNoiseGen6 = (NoiseGeneratorOctaves)noiseGens[4];
+        this.cybertronNoiseGen7 = (NoiseGeneratorOctaves)noiseGens[5];
     }
 
     public void func_147419_a(int p_147419_1_, int p_147419_2_, Block[] p_147419_3_)
@@ -148,7 +120,7 @@ public class ChunkProviderCybertron implements IChunkProvider
 
                                 if (k1 * 8 + l1 < b1)
                                 {
-                                    block = Blocks.lava;
+                                    block = CybertronMod.energon_block;
                                 }
 
                                 if (d15 > 0.0D)
@@ -183,17 +155,13 @@ public class ChunkProviderCybertron implements IChunkProvider
 
         byte b0 = 64;
         double d0 = 0.03125D;
-        this.slowsandNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.slowsandNoise, p_147418_1_ * 16, p_147418_2_ * 16, 0, 16, 16, 1, d0, d0, 1.0D);
-        this.gravelNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.gravelNoise, p_147418_1_ * 16, 109, p_147418_2_ * 16, 16, 1, 16, d0, 1.0D, d0);
-        this.netherrackExclusivityNoise = this.netherrackExculsivityNoiseGen.generateNoiseOctaves(this.netherrackExclusivityNoise, p_147418_1_ * 16, p_147418_2_ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
+        this.concreteExclusivityNoise = this.concreteExculsivityNoiseGen.generateNoiseOctaves(this.concreteExclusivityNoise, p_147418_1_ * 16, p_147418_2_ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 
         for (int k = 0; k < 16; ++k)
         {
             for (int l = 0; l < 16; ++l)
             {
-                boolean flag = this.slowsandNoise[k + l * 16] + this.hellRNG.nextDouble() * 0.2D > 0.0D;
-                boolean flag1 = this.gravelNoise[k + l * 16] + this.hellRNG.nextDouble() * 0.2D > 0.0D;
-                int i1 = (int)(this.netherrackExclusivityNoise[k + l * 16] / 3.0D + 3.0D + this.hellRNG.nextDouble() * 0.25D);
+                int i1 = (int)(this.concreteExclusivityNoise[k + l * 16] / 3.0D + 3.0D + this.cybertronRNG.nextDouble() * 0.25D);
                 int j1 = -1;
                 Block block = CybertronMod.reinforced_concrete;
                 Block block1 = CybertronMod.reinforced_concrete;
@@ -202,7 +170,7 @@ public class ChunkProviderCybertron implements IChunkProvider
                 {
                     int l1 = (l * 16 + k) * 128 + k1;
 
-                    if (k1 < 127 - this.hellRNG.nextInt(5) && k1 > 0 + this.hellRNG.nextInt(5))
+                    if (k1 < 127 - this.cybertronRNG.nextInt(5) && k1 > 0 + this.cybertronRNG.nextInt(5))
                     {
                         Block block2 = p_147418_3_[l1];
 
@@ -221,23 +189,11 @@ public class ChunkProviderCybertron implements IChunkProvider
                                     {
                                         block = CybertronMod.reinforced_concrete;
                                         block1 = CybertronMod.reinforced_concrete;
-
-                                        if (flag1)
-                                        {
-                                            block = Blocks.gravel;
-                                            block1 = CybertronMod.reinforced_concrete;
-                                        }
-
-                                        if (flag)
-                                        {
-                                            block = Blocks.soul_sand;
-                                            block1 = Blocks.soul_sand;
-                                        }
                                     }
 
                                     if (k1 < b0 && (block == null || block.getMaterial() == Material.air))
                                     {
-                                        block = Blocks.lava;
+                                        block = CybertronMod.energon_block;
                                     }
 
                                     j1 = i1;
@@ -286,11 +242,10 @@ public class ChunkProviderCybertron implements IChunkProvider
      */
     public Chunk provideChunk(int par1, int par2)
     {
-        this.hellRNG.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
+        this.cybertronRNG.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
         Block[] ablock = new Block[32768];
         this.func_147419_a(par1, par2, ablock);
         this.func_147418_b(par1, par2, ablock);
-        this.netherCaveGenerator.func_151539_a(this, this.worldObj, par1, par2, ablock);
         Chunk chunk = new Chunk(this.worldObj, ablock, par1, par2);
         BiomeGenBase[] abiomegenbase = this.worldObj.getWorldChunkManager().loadBlockGeneratorData((BiomeGenBase[])null, par1 * 16, par2 * 16, 16, 16);
         byte[] abyte = chunk.getBiomeArray();
@@ -321,11 +276,11 @@ public class ChunkProviderCybertron implements IChunkProvider
 
         double d0 = 684.412D;
         double d1 = 2053.236D;
-        this.noiseData4 = this.netherNoiseGen6.generateNoiseOctaves(this.noiseData4, par2, par3, par4, par5, 1, par7, 1.0D, 0.0D, 1.0D);
-        this.noiseData5 = this.netherNoiseGen7.generateNoiseOctaves(this.noiseData5, par2, par3, par4, par5, 1, par7, 100.0D, 0.0D, 100.0D);
-        this.noiseData1 = this.netherNoiseGen3.generateNoiseOctaves(this.noiseData1, par2, par3, par4, par5, par6, par7, d0 / 80.0D, d1 / 60.0D, d0 / 80.0D);
-        this.noiseData2 = this.netherNoiseGen1.generateNoiseOctaves(this.noiseData2, par2, par3, par4, par5, par6, par7, d0, d1, d0);
-        this.noiseData3 = this.netherNoiseGen2.generateNoiseOctaves(this.noiseData3, par2, par3, par4, par5, par6, par7, d0, d1, d0);
+        this.noiseData4 = this.cybertronNoiseGen6.generateNoiseOctaves(this.noiseData4, par2, par3, par4, par5, 1, par7, 1.0D, 0.0D, 1.0D);
+        this.noiseData5 = this.cybertronNoiseGen7.generateNoiseOctaves(this.noiseData5, par2, par3, par4, par5, 1, par7, 100.0D, 0.0D, 100.0D);
+        this.noiseData1 = this.cybertronNoiseGen3.generateNoiseOctaves(this.noiseData1, par2, par3, par4, par5, par6, par7, d0 / 80.0D, d1 / 60.0D, d0 / 80.0D);
+        this.noiseData2 = this.cybertronNoiseGen1.generateNoiseOctaves(this.noiseData2, par2, par3, par4, par5, par6, par7, d0, d1, d0);
+        this.noiseData3 = this.cybertronNoiseGen2.generateNoiseOctaves(this.noiseData3, par2, par3, par4, par5, par6, par7, d0, d1, d0);
         int k1 = 0;
         int l1 = 0;
         double[] adouble1 = new double[par6];
@@ -461,107 +416,6 @@ public class ChunkProviderCybertron implements IChunkProvider
     }
 
     /**
-     * Populates chunk with ores etc etc
-     */
-    public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
-    {
-        BlockFalling.fallInstantly = true;
-
-        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, hellRNG, par2, par3, false));
-
-        int k = par2 * 16;
-        int l = par3 * 16;
-        int i1;
-        int j1;
-        int k1;
-        int l1;
-
-        boolean doGen = TerrainGen.populate(par1IChunkProvider, worldObj, hellRNG, par2, par3, false, NETHER_LAVA);
-        for (i1 = 0; doGen && i1 < 8; ++i1)
-        {
-            j1 = k + this.hellRNG.nextInt(16) + 8;
-            k1 = this.hellRNG.nextInt(120) + 4;
-            l1 = l + this.hellRNG.nextInt(16) + 8;
-            (new WorldGenHellLava(Blocks.flowing_lava, false)).generate(this.worldObj, this.hellRNG, j1, k1, l1);
-        }
-
-        i1 = this.hellRNG.nextInt(this.hellRNG.nextInt(10) + 1) + 1;
-        int i2;
-
-        doGen = TerrainGen.populate(par1IChunkProvider, worldObj, hellRNG, par2, par3, false, FIRE);
-        for (j1 = 0; doGen && j1 < i1; ++j1)
-        {
-            k1 = k + this.hellRNG.nextInt(16) + 8;
-            l1 = this.hellRNG.nextInt(120) + 4;
-            i2 = l + this.hellRNG.nextInt(16) + 8;
-            (new WorldGenFire()).generate(this.worldObj, this.hellRNG, k1, l1, i2);
-        }
-
-        i1 = this.hellRNG.nextInt(this.hellRNG.nextInt(10) + 1);
-        
-        doGen = TerrainGen.populate(par1IChunkProvider, worldObj, hellRNG, par2, par3, false, GLOWSTONE);
-        for (j1 = 0; doGen && j1 < i1; ++j1)
-        {
-            k1 = k + this.hellRNG.nextInt(16) + 8;
-            l1 = this.hellRNG.nextInt(120) + 4;
-            i2 = l + this.hellRNG.nextInt(16) + 8;
-            (new WorldGenGlowStone1()).generate(this.worldObj, this.hellRNG, k1, l1, i2);
-        }
-
-        for (j1 = 0; doGen && j1 < 10; ++j1)
-        {
-            k1 = k + this.hellRNG.nextInt(16) + 8;
-            l1 = this.hellRNG.nextInt(128);
-            i2 = l + this.hellRNG.nextInt(16) + 8;
-            (new WorldGenGlowStone2()).generate(this.worldObj, this.hellRNG, k1, l1, i2);
-        }
-
-        MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(worldObj, hellRNG, k, l));
-
-        doGen = TerrainGen.decorate(worldObj, hellRNG, k, l, SHROOM);
-        if (doGen && this.hellRNG.nextInt(1) == 0)
-        {
-            j1 = k + this.hellRNG.nextInt(16) + 8;
-            k1 = this.hellRNG.nextInt(128);
-            l1 = l + this.hellRNG.nextInt(16) + 8;
-            (new WorldGenFlowers(Blocks.brown_mushroom)).generate(this.worldObj, this.hellRNG, j1, k1, l1);
-        }
-
-        if (doGen && this.hellRNG.nextInt(1) == 0)
-        {
-            j1 = k + this.hellRNG.nextInt(16) + 8;
-            k1 = this.hellRNG.nextInt(128);
-            l1 = l + this.hellRNG.nextInt(16) + 8;
-            (new WorldGenFlowers(Blocks.red_mushroom)).generate(this.worldObj, this.hellRNG, j1, k1, l1);
-        }
-
-        WorldGenMinable worldgenminable = new WorldGenMinable(CybertronMod.cybertron_ore, 13, CybertronMod.reinforced_concrete);
-        int j2;
-
-        doGen = TerrainGen.generateOre(worldObj, hellRNG, worldgenminable, k, l, QUARTZ);
-        for (k1 = 0; doGen && k1 < 16; ++k1)
-        {
-            l1 = k + this.hellRNG.nextInt(16);
-            i2 = this.hellRNG.nextInt(108) + 10;
-            j2 = l + this.hellRNG.nextInt(16);
-            worldgenminable.generate(this.worldObj, this.hellRNG, l1, i2, j2);
-        }
-
-        for (k1 = 0; k1 < 16; ++k1)
-        {
-            l1 = k + this.hellRNG.nextInt(16);
-            i2 = this.hellRNG.nextInt(108) + 10;
-            j2 = l + this.hellRNG.nextInt(16);
-            (new WorldGenHellLava(Blocks.flowing_lava, true)).generate(this.worldObj, this.hellRNG, l1, i2, j2);
-        }
-
-        MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(worldObj, hellRNG, k, l));
-        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, hellRNG, par2, par3, false));
-
-        BlockFalling.fallInstantly = false;
-    }
-
-    /**
      * Two modes of operation: if passed true, save all Chunks in one go.  If passed false, save up to two chunks.
      * Return true if all chunks have been saved.
      */
@@ -621,6 +475,11 @@ public class ChunkProviderCybertron implements IChunkProvider
 
 	@Override
 	public void recreateStructures(int par1, int par2) {
+
+	}
+
+	@Override
+	public void populate(IChunkProvider var1, int var2, int var3) {
 
 	}
 }

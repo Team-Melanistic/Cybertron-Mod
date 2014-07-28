@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -12,6 +14,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cybertron.blocks.BlockCybertronOre;
 import cybertron.blocks.BlockCybertronPortal;
+import cybertron.blocks.BlockEnergon;
 import cybertron.blocks.BlockReinforcedConcrete;
 import cybertron.dimension.CybertronBiome;
 import cybertron.dimension.WorldProviderCybertron;
@@ -31,6 +34,9 @@ public class CybertronMod {
 	
 	public static BiomeGenBase cybertron_biome;
 	public static final int CYBERTRON_DIMENSION_ID = 10;
+	
+	public static Fluid energon;
+	public static Block energon_block;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -58,6 +64,12 @@ public class CybertronMod {
 		
 		reinforced_concrete = new BlockReinforcedConcrete();
 		GameRegistry.registerBlock(reinforced_concrete, "reinforced_concrete");
+		
+		energon = new Fluid("energon");
+		FluidRegistry.registerFluid(energon);
+		
+		energon_block = new BlockEnergon();
+		GameRegistry.registerBlock(energon_block, "energon_block");
 	}
 	
 	private void registerItems() {
