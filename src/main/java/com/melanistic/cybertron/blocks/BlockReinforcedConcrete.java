@@ -1,9 +1,10 @@
-package cybertron.blocks;
+package com.melanistic.cybertron.blocks;
+
+import com.melanistic.cybertron.CybertronMod;
 
 import net.minecraft.block.BlockCompressed;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.world.World;
-import cybertron.CybertronMod;
 
 public class BlockReinforcedConcrete extends BlockCompressed {
 	public BlockReinforcedConcrete() {

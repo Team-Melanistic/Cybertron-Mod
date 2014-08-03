@@ -1,4 +1,14 @@
-package cybertron;
+package com.melanistic.cybertron;
+
+import com.melanistic.cybertron.blocks.BlockCybertronOre;
+import com.melanistic.cybertron.blocks.BlockCybertronPortal;
+import com.melanistic.cybertron.blocks.BlockEnergon;
+import com.melanistic.cybertron.blocks.BlockReinforcedConcrete;
+import com.melanistic.cybertron.blocks.FluidEnergon;
+import com.melanistic.cybertron.blocks.WorldGenCybertron;
+import com.melanistic.cybertron.dimension.CybertronBiome;
+import com.melanistic.cybertron.dimension.WorldProviderCybertron;
+import com.melanistic.cybertron.items.ItemCybertronCrystal;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -12,13 +22,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cybertron.blocks.BlockCybertronOre;
-import cybertron.blocks.BlockCybertronPortal;
-import cybertron.blocks.BlockEnergon;
-import cybertron.blocks.BlockReinforcedConcrete;
-import cybertron.dimension.CybertronBiome;
-import cybertron.dimension.WorldProviderCybertron;
-import cybertron.items.ItemCybertronCrystal;
 
 @Mod(modid = CybertronMod.MODID, name = CybertronMod.NAME, version = CybertronMod.VERSION)
 public class CybertronMod {
@@ -46,6 +49,10 @@ public class CybertronMod {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		registerShapelessRecipes();
+		registerShapedRecipes();
+		registerSmeltingRecipes();
+		registerWorldGenerators();
 		registerBiomes();
 		registerDimensions();
 	}
@@ -65,7 +72,7 @@ public class CybertronMod {
 		reinforced_concrete = new BlockReinforcedConcrete();
 		GameRegistry.registerBlock(reinforced_concrete, "reinforced_concrete");
 		
-		energon = new Fluid("energon");
+		energon = new FluidEnergon();
 		FluidRegistry.registerFluid(energon);
 		
 		energon_block = new BlockEnergon();
@@ -77,6 +84,16 @@ public class CybertronMod {
 		GameRegistry.registerItem(cybertron_crystal, "cybertron_crystal");
 	}
 	
+	private void registerShapelessRecipes(){}
+	
+	private void registerShapedRecipes(){}
+	
+	private void registerSmeltingRecipes(){}
+	
+	private void registerWorldGenerators() {
+		GameRegistry.registerWorldGenerator(new WorldGenCybertron(), 0);
+	}
+	
 	private void registerBiomes() {
 		cybertron_biome = new CybertronBiome();
 	}
@@ -85,14 +102,4 @@ public class CybertronMod {
 		DimensionManager.registerProviderType(CYBERTRON_DIMENSION_ID, WorldProviderCybertron.class, false);
 		DimensionManager.registerDimension(CYBERTRON_DIMENSION_ID, CYBERTRON_DIMENSION_ID);
 	}
-	
-	private void registerShapelessRecipes(){}
-	
-	private void registerShapedRecipes(){}
-	
-	private void registerSmeltingRecipes(){}
-	
-	private void registerWorldGenerators(){}
-	
-	private void registerTileEntities(){}
 }

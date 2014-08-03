@@ -1,4 +1,6 @@
-package cybertron.dimension;
+package com.melanistic.cybertron.dimension;
+
+import com.melanistic.cybertron.CybertronMod;
 
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
@@ -7,7 +9,6 @@ import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import cybertron.CybertronMod;
 
 public class WorldProviderCybertron extends WorldProvider
 {
@@ -17,23 +18,8 @@ public class WorldProviderCybertron extends WorldProvider
     public void registerWorldChunkManager()
     {
         this.worldChunkMgr = new WorldChunkManagerHell(CybertronMod.cybertron_biome, 0.0F);
-        this.isHellWorld = false;
+        this.isHellWorld = true;
         this.hasNoSky = false;
-        this.dimensionId = CybertronMod.CYBERTRON_DIMENSION_ID;
-    }
-
-    /**
-     * Creates the light to brightness table
-     */
-    protected void generateLightBrightnessTable()
-    {
-        float f = 0.1F;
-
-        for (int i = 0; i <= 15; ++i)
-        {
-            float f1 = 1.0F - (float)i / 15.0F;
-            this.lightBrightnessTable[i] = (1.0F - f1) / (f1 * 3.0F + 1.0F) * (1.0F - f) + f;
-        }
     }
 
     /**
@@ -72,6 +58,11 @@ public class WorldProviderCybertron extends WorldProvider
      * Returns the dimension's name, e.g. "The End", "Nether", or "Overworld".
      */
     public String getDimensionName()
+    {
+        return "Cybertron";
+    }
+    
+    public String getSaveFolder()
     {
         return "Cybertron";
     }

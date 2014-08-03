@@ -1,8 +1,9 @@
-package cybertron.blocks;
+package com.melanistic.cybertron.blocks;
 
 import java.util.Random;
 
-import cybertron.CybertronMod;
+import com.melanistic.cybertron.CybertronMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

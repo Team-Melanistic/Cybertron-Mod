@@ -1,11 +1,12 @@
-package cybertron.items;
+package com.melanistic.cybertron.items;
+
+import com.melanistic.cybertron.CybertronMod;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import cybertron.CybertronMod;
 
 public class ItemCybertronCrystal extends Item {
 	public ItemCybertronCrystal() {

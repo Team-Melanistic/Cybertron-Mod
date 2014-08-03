@@ -1,7 +1,9 @@
-package cybertron.dimension;
+package com.melanistic.cybertron.dimension;
 
 import java.util.List;
 import java.util.Random;
+
+import com.melanistic.cybertron.CybertronMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
@@ -24,7 +26,6 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import cpw.mods.fml.common.eventhandler.Event.Result;
-import cybertron.CybertronMod;
 
 public class ChunkProviderCybertron implements IChunkProvider
 {

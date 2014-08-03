@@ -1,9 +1,11 @@
-package cybertron.dimension;
+package com.melanistic.cybertron.dimension;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
+import com.melanistic.cybertron.CybertronMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -15,7 +17,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
-import cybertron.CybertronMod;
 
 public class TeleporterCybertron extends Teleporter {
     private final WorldServer worldServerInstance;

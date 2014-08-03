@@ -1,6 +1,9 @@
-package cybertron.blocks;
+package com.melanistic.cybertron.blocks;
 
 import java.util.Random;
+
+import com.melanistic.cybertron.CybertronMod;
+import com.melanistic.cybertron.dimension.TeleporterCybertron;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
@@ -15,8 +18,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import cybertron.CybertronMod;
-import cybertron.dimension.TeleporterCybertron;
 
 public class BlockCybertronPortal extends BlockBreakable {
 	public BlockCybertronPortal()
