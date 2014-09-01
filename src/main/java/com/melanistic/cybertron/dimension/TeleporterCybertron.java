@@ -29,7 +29,6 @@ public class TeleporterCybertron extends Teleporter {
      * location.
      */
     private final List destinationCoordinateKeys = new ArrayList();
-    private static final String __OBFID = "CL_00000153";
 
     public TeleporterCybertron(WorldServer par1WorldServer)
     {

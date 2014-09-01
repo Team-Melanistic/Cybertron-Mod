@@ -16,16 +16,15 @@ public class WorldGenCybertron implements IWorldGenerator {
 		if (world.provider.dimensionId == 0)
 		generateSurface(world, random, chunkX * 16, chunkZ * 16);
 	}
-	private void generateNether(World world, Random random, int i, int j) {}
-	
+
 	private void generateSurface(World world, Random random, int i, int j) {
 		for(int k = 0; k < 10; k++) {
 			int cyberOreXCoord = i + random.nextInt(16);
 			int cyberOreYCoord = random.nextInt(32);
 			int cyberOreZCoord = j + random.nextInt(16);
-			(new WorldGenMinable(CybertronMod.cybertron_ore, 7)).generate(world, random, cyberOreXCoord, cyberOreYCoord, cyberOreZCoord);
+			
+			WorldGenMinable oreGen = new WorldGenMinable(CybertronMod.cybertron_ore, 7);
+			oreGen.generate(world, random, cyberOreXCoord, cyberOreYCoord, cyberOreZCoord);
 		}
 	}
-	
-	private void generateEnd(World world, Random random, int i, int j) {}
 }

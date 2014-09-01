@@ -1,21 +1,21 @@
 package com.melanistic.cybertron;
 
-import com.melanistic.cybertron.blocks.BlockCybertronOre;
-import com.melanistic.cybertron.blocks.BlockCybertronPortal;
-import com.melanistic.cybertron.blocks.BlockEnergon;
-import com.melanistic.cybertron.blocks.BlockReinforcedConcrete;
-import com.melanistic.cybertron.blocks.FluidEnergon;
-import com.melanistic.cybertron.blocks.WorldGenCybertron;
-import com.melanistic.cybertron.dimension.CybertronBiome;
-import com.melanistic.cybertron.dimension.WorldProviderCybertron;
-import com.melanistic.cybertron.items.ItemCybertronCrystal;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+
+import com.melanistic.cybertron.blocks.BlockCybertronOre;
+import com.melanistic.cybertron.blocks.BlockCybertronPortal;
+import com.melanistic.cybertron.blocks.BlockEnergon;
+import com.melanistic.cybertron.blocks.BlockReinforcedConcrete;
+import com.melanistic.cybertron.blocks.WorldGenCybertron;
+import com.melanistic.cybertron.dimension.CybertronBiome;
+import com.melanistic.cybertron.dimension.WorldProviderCybertron;
+import com.melanistic.cybertron.items.ItemCybertronCrystal;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -72,7 +72,7 @@ public class CybertronMod {
 		reinforced_concrete = new BlockReinforcedConcrete();
 		GameRegistry.registerBlock(reinforced_concrete, "reinforced_concrete");
 		
-		energon = new FluidEnergon();
+		energon = new Fluid("energon").setViscosity(2000);
 		FluidRegistry.registerFluid(energon);
 		
 		energon_block = new BlockEnergon();
