@@ -117,9 +117,9 @@ public class TeleporterCybertron extends Teleporter {
 
                     for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
                     {
-                        if (this.worldServerInstance.getBlock(l3, i2, l1) == CyberBlocks.cybertron_portal)
+                        if (this.worldServerInstance.getBlock(l3, i2, l1) == CyberBlocks.transformium_portal)
                         {
-                            while (this.worldServerInstance.getBlock(l3, i2 - 1, l1) == CyberBlocks.cybertron_portal)
+                            while (this.worldServerInstance.getBlock(l3, i2 - 1, l1) == CyberBlocks.transformium_portal)
                             {
                                 --i2;
                             }
@@ -153,22 +153,22 @@ public class TeleporterCybertron extends Teleporter {
             d7 = (double)k + 0.5D;
             int i4 = -1;
 
-            if (this.worldServerInstance.getBlock(i - 1, j, k) == CyberBlocks.cybertron_portal)
+            if (this.worldServerInstance.getBlock(i - 1, j, k) == CyberBlocks.transformium_portal)
             {
                 i4 = 2;
             }
 
-            if (this.worldServerInstance.getBlock(i + 1, j, k) == CyberBlocks.cybertron_portal)
+            if (this.worldServerInstance.getBlock(i + 1, j, k) == CyberBlocks.transformium_portal)
             {
                 i4 = 0;
             }
 
-            if (this.worldServerInstance.getBlock(i, j, k - 1) == CyberBlocks.cybertron_portal)
+            if (this.worldServerInstance.getBlock(i, j, k - 1) == CyberBlocks.transformium_portal)
             {
                 i4 = 3;
             }
 
-            if (this.worldServerInstance.getBlock(i, j, k + 1) == CyberBlocks.cybertron_portal)
+            if (this.worldServerInstance.getBlock(i, j, k + 1) == CyberBlocks.transformium_portal)
             {
                 i4 = 1;
             }
@@ -469,7 +469,7 @@ public class TeleporterCybertron extends Teleporter {
                     i4 = j2 + k3;
                     j4 = k2 + (j3 - 1) * l2;
                     flag = j3 == 0 || j3 == 3 || k3 == -1 || k3 == 3;
-                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? CyberBlocks.reinforced_concrete : CyberBlocks.cybertron_portal), 0, 2);
+                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? CyberBlocks.reinforced_concrete : CyberBlocks.transformium_portal), 0, 2);
                 }
             }
 

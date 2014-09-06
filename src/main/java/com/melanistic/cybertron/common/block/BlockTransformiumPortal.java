@@ -20,15 +20,15 @@ import com.melanistic.cybertron.common.world.dimension.TeleporterCybertron;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCybertronPortal extends BlockBreakable {
-	public BlockCybertronPortal()
+public class BlockTransformiumPortal extends BlockBreakable {
+	public BlockTransformiumPortal()
 	{
-		super("stone", Material.portal, false);
+		super("portal", Material.portal, false);
 		this.setTickRandomly(true);
 		this.setHardness(-1.0F);
 		this.setStepSound(soundTypeGlass);
 		this.setLightLevel(0.75F);
-		this.setBlockName("cybertronPortal");
+		this.setBlockName("portalTransformium");
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	{
 		float f;
 		float f1;
-		if (par1IBlockAccess.getBlock(par2 - 1, par3, par4) != CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2 + 1, par3, par4) != this)
+		if (par1IBlockAccess.getBlock(par2 - 1, par3, par4) != CyberBlocks.transformium_portal && par1IBlockAccess.getBlock(par2 + 1, par3, par4) != this)
 		{
 			f = 0.125F;
 			f1 = 0.5F;
@@ -104,7 +104,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	}
 	
 	/**
-	 * Checks to see if CyberBlocks.cybertron_portal; location is valid to create a portal and will return True if it does. Args: world, x, y, z
+	 * Checks to see if portal location is valid to create a portal and will return True if it does. Args: world, x, y, z
 	 */
 	public boolean tryToCreatePortal(World par1World, int par2, int par3, int par4)
 	{
@@ -172,7 +172,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	{
 		byte b0 = 0;
 		byte b1 = 1;
-		if (par1World.getBlock(par2 - 1, par3, par4) == CyberBlocks.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this)
+		if (par1World.getBlock(par2 - 1, par3, par4) == CyberBlocks.transformium_portal || par1World.getBlock(par2 + 1, par3, par4) == this)
 		{
 			b0 = 1;
 			b1 = 0;
@@ -195,8 +195,8 @@ public class BlockCybertronPortal extends BlockBreakable {
 			}
 			if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == CyberBlocks.reinforced_concrete)
 			{
-				boolean flag = par1World.getBlock(par2 - 1, par3, par4) == CyberBlocks.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this;
-				boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == CyberBlocks.cybertron_portal || par1World.getBlock(par2, par3, par4 + 1) == this;
+				boolean flag = par1World.getBlock(par2 - 1, par3, par4) == CyberBlocks.transformium_portal || par1World.getBlock(par2 + 1, par3, par4) == this;
+				boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == CyberBlocks.transformium_portal || par1World.getBlock(par2, par3, par4 + 1) == this;
 				if (flag && flag1)
 				{
 					par1World.setBlockToAir(par2, par3, par4);
@@ -229,10 +229,10 @@ public class BlockCybertronPortal extends BlockBreakable {
 		}
 		else
 		{
-			boolean flag = par1IBlockAccess.getBlock(par2 - 1, par3, par4) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2 - 2, par3, par4) != this;
-			boolean flag1 = par1IBlockAccess.getBlock(par2 + 1, par3, par4) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2 + 2, par3, par4) != this;
-			boolean flag2 = par1IBlockAccess.getBlock(par2, par3, par4 - 1) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2, par3, par4 - 2) != this;
-			boolean flag3 = par1IBlockAccess.getBlock(par2, par3, par4 + 1) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2, par3, par4 + 2) != this;
+			boolean flag = par1IBlockAccess.getBlock(par2 - 1, par3, par4) == CyberBlocks.transformium_portal && par1IBlockAccess.getBlock(par2 - 2, par3, par4) != this;
+			boolean flag1 = par1IBlockAccess.getBlock(par2 + 1, par3, par4) == CyberBlocks.transformium_portal && par1IBlockAccess.getBlock(par2 + 2, par3, par4) != this;
+			boolean flag2 = par1IBlockAccess.getBlock(par2, par3, par4 - 1) == CyberBlocks.transformium_portal && par1IBlockAccess.getBlock(par2, par3, par4 - 2) != this;
+			boolean flag3 = par1IBlockAccess.getBlock(par2, par3, par4 + 1) == CyberBlocks.transformium_portal && par1IBlockAccess.getBlock(par2, par3, par4 + 2) != this;
 			boolean flag4 = flag || flag1;
 			boolean flag5 = flag2 || flag3;
 			return flag4 && par5 == 4 ? true : (flag4 && par5 == 5 ? true : (flag5 && par5 == 2 ? true : flag5 && par5 == 3));
@@ -302,7 +302,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 			d3 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
 			d4 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
 			d5 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
-			if (par1World.getBlock(par2 - 1, par3, par4) != CyberBlocks.cybertron_portal && par1World.getBlock(par2 + 1, par3, par4) != this)
+			if (par1World.getBlock(par2 - 1, par3, par4) != CyberBlocks.transformium_portal && par1World.getBlock(par2 + 1, par3, par4) != this)
 			{
 				d0 = (double)par2 + 0.5D + 0.25D * (double)i1;
 				d3 = (double)(par5Random.nextFloat() * 2.0F * (float)i1);

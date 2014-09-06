@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
+<<<<<<< HEAD
 import com.melanistic.cybertron.common.block.item.ItemBlockTemple;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,19 +14,27 @@ public class CyberBlocks
 {
 	
 	public static BlockCybertronPortal cybertron_portal;
+=======
+public class CyberBlocks {
+	public static BlockTransformiumPortal transformium_portal;
+>>>>>>> 783d4638fecc6b345e854f88237e50f7fd524efb
 	public static Block reinforced_concrete;
-	public static Block cybertron_ore;
+	public static Block transformium_ore;
+	public static Block transformium_block;
 	public static Fluid energon;
 	public static Block energon_block;
 	public static Block templeBlocks;
 	
 	public static void registerBlocks()
 	{
-		cybertron_ore = new BlockCybertronOre();
-		GameRegistry.registerBlock(cybertron_ore, "cybertron_ore");
+		transformium_ore = new BlockTransformiumOre();
+		GameRegistry.registerBlock(transformium_ore, "transformium_ore");
 		
-		cybertron_portal = new BlockCybertronPortal();
-		GameRegistry.registerBlock(cybertron_portal, "cybertron_portal");
+		transformium_block = new BlockTransformium();
+		GameRegistry.registerBlock(transformium_block, "transformium_block");
+				
+		transformium_portal = new BlockTransformiumPortal();
+		GameRegistry.registerBlock(transformium_portal, "transformium_portal");
 		
 		reinforced_concrete = new BlockReinforcedConcrete();
 		GameRegistry.registerBlock(reinforced_concrete, "reinforced_concrete");

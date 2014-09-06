@@ -9,12 +9,12 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemCybertronCrystal extends Item {
-	public ItemCybertronCrystal()
+public class ItemTransformiumShard extends Item {
+	public ItemTransformiumShard()
 	{
 		super();
-		this.setUnlocalizedName("cybertronCrystal");
-		this.setTextureName(CybertronReference.MODID + "cybertron_crystal");
+		this.setUnlocalizedName("shardTransformium");
+		this.setTextureName(CybertronReference.MODID + "transformium_shard");
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 }
