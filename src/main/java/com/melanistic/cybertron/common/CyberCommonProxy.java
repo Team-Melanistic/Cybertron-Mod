@@ -14,7 +14,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CyberCommonProxy {
 	public static BiomeGenBase cybertron_biome;
-	public static final int CYBERTRON_DIMENSION_ID = 10;
+	public static final int CYBERTRON_DIMENSION_ID = DimensionManager.getNextFreeDimId();
 	
 	public void preInit()
 	{

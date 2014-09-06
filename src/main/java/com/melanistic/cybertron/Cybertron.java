@@ -13,9 +13,11 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = CybertronReference.MODID, name = CybertronReference.MODNAME, version = CybertronReference.VERSION)
-public class Cybertron {
-	@SidedProxy(clientSide = "com.melanistic.cybertron.client.ClientProxy", serverSide = "com.melanistic.cybertron.common.CommonProxy")
-	public CyberCommonProxy proxy;
+public class Cybertron 
+{
+	
+	@SidedProxy(clientSide = "com.melanistic.cybertron.client.CyberClientProxy", serverSide = "com.melanistic.cybertron.common.CyberCommonProxy")
+	public static CyberCommonProxy proxy;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

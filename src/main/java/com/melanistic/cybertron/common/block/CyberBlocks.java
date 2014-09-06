@@ -1,16 +1,23 @@
 package com.melanistic.cybertron.common.block;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
-public class CyberBlocks {
+import com.melanistic.cybertron.common.block.item.ItemBlockTemple;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+public class CyberBlocks
+{
+	
 	public static BlockCybertronPortal cybertron_portal;
 	public static Block reinforced_concrete;
 	public static Block cybertron_ore;
 	public static Fluid energon;
 	public static Block energon_block;
+	public static Block templeBlocks;
 	
 	public static void registerBlocks()
 	{
@@ -28,5 +35,8 @@ public class CyberBlocks {
 		
 		energon_block = new BlockEnergon();
 		GameRegistry.registerBlock(energon_block, "energon_block");
+		
+		templeBlocks = new BlockTemple(Material.iron);
+		GameRegistry.registerBlock(templeBlocks, ItemBlockTemple.class, "templeBlocks");
 	}
 }
