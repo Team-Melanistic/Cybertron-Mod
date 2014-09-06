@@ -1,21 +1,17 @@
-package com.melanistic.cybertron.dimension;
+package com.melanistic.cybertron.common.world.dimension;
 
-import com.melanistic.cybertron.CybertronMod;
-
-import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import com.melanistic.cybertron.common.CommonProxy;
 
 public class WorldProviderCybertron extends WorldProvider {
 	/**
 	 * creates a new world chunk manager for WorldProvider
 	 */
 	public void registerWorldChunkManager() {
-		this.worldChunkMgr = new WorldChunkManagerHell(CybertronMod.cybertron_biome, 0.5F);
+		this.worldChunkMgr = new WorldChunkManagerHell(CommonProxy.cybertron_biome, 0.5F);
 		this.isHellWorld = true;
 		this.hasNoSky = false;
 		this.dimensionId = -1;

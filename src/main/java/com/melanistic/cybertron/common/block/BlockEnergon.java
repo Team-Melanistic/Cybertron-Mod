@@ -1,11 +1,13 @@
-package com.melanistic.cybertron.blocks;
-
-import com.melanistic.cybertron.CybertronMod;
+package com.melanistic.cybertron.common.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.BlockFluidClassic;
+
+import com.melanistic.cybertron.CybertronMod;
+import com.melanistic.cybertron.lib.ModInfo;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -14,7 +16,7 @@ public class BlockEnergon extends BlockFluidClassic {
 	public static IIcon[] icons;
 	
 	public BlockEnergon() {
-		super(CybertronMod.energon, Material.water);
+		super(CyberBlocks.energon, Material.water);
 		this.setBlockName("energon");
 	}
 	
@@ -23,8 +25,8 @@ public class BlockEnergon extends BlockFluidClassic {
 	public void registerBlockIcons(IIconRegister icon) {
 		icons = new IIcon[2];
 
-		icons[0] = icon.registerIcon(CybertronMod.MODID + ":" + "energon_still");
-		icons[1] = icon.registerIcon(CybertronMod.MODID + ":" + "energon_flow");
+		icons[0] = icon.registerIcon(ModInfo.MODID + ":" + "energon_still");
+		icons[1] = icon.registerIcon(ModInfo.MODID + ":" + "energon_flow");
 	}
 	
 	@SideOnly(Side.CLIENT)

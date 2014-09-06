@@ -1,9 +1,6 @@
-package com.melanistic.cybertron.blocks;
+package com.melanistic.cybertron.common.block;
 
 import java.util.Random;
-
-import com.melanistic.cybertron.CybertronMod;
-import com.melanistic.cybertron.dimension.TeleporterCybertron;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
@@ -16,6 +13,10 @@ import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import com.melanistic.cybertron.common.CommonProxy;
+import com.melanistic.cybertron.common.world.dimension.TeleporterCybertron;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -55,7 +56,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	}
 	
 	/**
-	 * Returns a bounding box from the pool of bounding boxes (CybertronMod.cybertron_portal; means CybertronMod.cybertron_portal; box can change after the pool has been
+	 * Returns a bounding box from the pool of bounding boxes (CyberBlocks.cybertron_portal; means CyberBlocks.cybertron_portal; box can change after the pool has been
 	 * cleared to be reused)
 	 */
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
@@ -70,7 +71,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	{
 		float f;
 		float f1;
-		if (par1IBlockAccess.getBlock(par2 - 1, par3, par4) != CybertronMod.cybertron_portal && par1IBlockAccess.getBlock(par2 + 1, par3, par4) != this)
+		if (par1IBlockAccess.getBlock(par2 - 1, par3, par4) != CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2 + 1, par3, par4) != this)
 		{
 			f = 0.125F;
 			f1 = 0.5F;
@@ -85,8 +86,8 @@ public class BlockCybertronPortal extends BlockBreakable {
 	}
 	
 	/**
-	 * Is CybertronMod.cybertron_portal; block (a) opaque and (B) a full 1m cube? This determines whether or not to render the shared face of two
-	 * adjacent blocks and also whether the player can attach torches, redstone wire, etc to CybertronMod.cybertron_portal; block.
+	 * Is CyberBlocks.cybertron_portal; block (a) opaque and (B) a full 1m cube? This determines whether or not to render the shared face of two
+	 * adjacent blocks and also whether the player can attach torches, redstone wire, etc to CyberBlocks.cybertron_portal; block.
 	 */
 	public boolean isOpaqueCube()
 	{
@@ -94,7 +95,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	}
 	
 	/**
-	 * If CybertronMod.cybertron_portal; block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+	 * If CyberBlocks.cybertron_portal; block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
 	 */
 	@Override
 	public boolean renderAsNormalBlock()
@@ -103,17 +104,17 @@ public class BlockCybertronPortal extends BlockBreakable {
 	}
 	
 	/**
-	 * Checks to see if CybertronMod.cybertron_portal; location is valid to create a portal and will return True if it does. Args: world, x, y, z
+	 * Checks to see if CyberBlocks.cybertron_portal; location is valid to create a portal and will return True if it does. Args: world, x, y, z
 	 */
 	public boolean tryToCreatePortal(World par1World, int par2, int par3, int par4)
 	{
 		byte b0 = 0;
 		byte b1 = 0;
-		if (par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.reinforced_concrete || par1World.getBlock(par2 + 1, par3, par4) == CybertronMod.reinforced_concrete)
+		if (par1World.getBlock(par2 - 1, par3, par4) == CyberBlocks.reinforced_concrete || par1World.getBlock(par2 + 1, par3, par4) == CyberBlocks.reinforced_concrete)
 		{
 			b0 = 1;
 		}
-		if (par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.reinforced_concrete || par1World.getBlock(par2, par3, par4 + 1) == CybertronMod.reinforced_concrete)
+		if (par1World.getBlock(par2, par3, par4 - 1) == CyberBlocks.reinforced_concrete || par1World.getBlock(par2, par3, par4 + 1) == CyberBlocks.reinforced_concrete)
 		{
 			b1 = 1;
 		}
@@ -140,12 +141,12 @@ public class BlockCybertronPortal extends BlockBreakable {
 						Block j1 = par1World.getBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l);
 						if (flag)
 						{
-							if (j1 != CybertronMod.reinforced_concrete)
+							if (j1 != CyberBlocks.reinforced_concrete)
 							{
 								return false;
 							}
 						}
-						else if (j1 != Blocks.air && j1 != CybertronMod.reinforced_concrete)
+						else if (j1 != Blocks.air && j1 != CyberBlocks.reinforced_concrete)
 						{
 							return false;
 						}
@@ -171,7 +172,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	{
 		byte b0 = 0;
 		byte b1 = 1;
-		if (par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this)
+		if (par1World.getBlock(par2 - 1, par3, par4) == CyberBlocks.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this)
 		{
 			b0 = 1;
 			b1 = 0;
@@ -181,7 +182,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 		{
 			
 		}
-		if (par1World.getBlock(par2, i1 - 1, par4) != CybertronMod.reinforced_concrete)
+		if (par1World.getBlock(par2, i1 - 1, par4) != CyberBlocks.reinforced_concrete)
 		{
 			par1World.setBlockToAir(par2, par3, par4);
 		}
@@ -192,17 +193,17 @@ public class BlockCybertronPortal extends BlockBreakable {
 			{
 				;
 			}
-			if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == CybertronMod.reinforced_concrete)
+			if (j1 == 3 && par1World.getBlock(par2, i1 + j1, par4) == CyberBlocks.reinforced_concrete)
 			{
-				boolean flag = par1World.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this;
-				boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == CybertronMod.cybertron_portal || par1World.getBlock(par2, par3, par4 + 1) == this;
+				boolean flag = par1World.getBlock(par2 - 1, par3, par4) == CyberBlocks.cybertron_portal || par1World.getBlock(par2 + 1, par3, par4) == this;
+				boolean flag1 = par1World.getBlock(par2, par3, par4 - 1) == CyberBlocks.cybertron_portal || par1World.getBlock(par2, par3, par4 + 1) == this;
 				if (flag && flag1)
 				{
 					par1World.setBlockToAir(par2, par3, par4);
 				}
 				else
 				{
-					if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != CybertronMod.reinforced_concrete || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != CybertronMod.reinforced_concrete || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
+					if ((par1World.getBlock(par2 + b0, par3, par4 + b1) != CyberBlocks.reinforced_concrete || par1World.getBlock(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlock(par2 - b0, par3, par4 - b1) != CyberBlocks.reinforced_concrete || par1World.getBlock(par2 + b0, par3, par4 + b1) != this))
 					{
 						par1World.setBlockToAir(par2, par3, par4);
 					}
@@ -217,7 +218,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	
 	@SideOnly(Side.CLIENT)
 	/**
-	 * Returns true if the given side of CybertronMod.cybertron_portal; block type should be rendered, if the adjacent block is at the given
+	 * Returns true if the given side of CyberBlocks.cybertron_portal; block type should be rendered, if the adjacent block is at the given
 	 * coordinates. Args: blockAccess, x, y, z, side
 	 */
 	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
@@ -228,10 +229,10 @@ public class BlockCybertronPortal extends BlockBreakable {
 		}
 		else
 		{
-			boolean flag = par1IBlockAccess.getBlock(par2 - 1, par3, par4) == CybertronMod.cybertron_portal && par1IBlockAccess.getBlock(par2 - 2, par3, par4) != this;
-			boolean flag1 = par1IBlockAccess.getBlock(par2 + 1, par3, par4) == CybertronMod.cybertron_portal && par1IBlockAccess.getBlock(par2 + 2, par3, par4) != this;
-			boolean flag2 = par1IBlockAccess.getBlock(par2, par3, par4 - 1) == CybertronMod.cybertron_portal && par1IBlockAccess.getBlock(par2, par3, par4 - 2) != this;
-			boolean flag3 = par1IBlockAccess.getBlock(par2, par3, par4 + 1) == CybertronMod.cybertron_portal && par1IBlockAccess.getBlock(par2, par3, par4 + 2) != this;
+			boolean flag = par1IBlockAccess.getBlock(par2 - 1, par3, par4) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2 - 2, par3, par4) != this;
+			boolean flag1 = par1IBlockAccess.getBlock(par2 + 1, par3, par4) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2 + 2, par3, par4) != this;
+			boolean flag2 = par1IBlockAccess.getBlock(par2, par3, par4 - 1) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2, par3, par4 - 2) != this;
+			boolean flag3 = par1IBlockAccess.getBlock(par2, par3, par4 + 1) == CyberBlocks.cybertron_portal && par1IBlockAccess.getBlock(par2, par3, par4 + 2) != this;
 			boolean flag4 = flag || flag1;
 			boolean flag5 = flag2 || flag3;
 			return flag4 && par5 == 4 ? true : (flag4 && par5 == 5 ? true : (flag5 && par5 == 2 ? true : flag5 && par5 == 3));
@@ -247,7 +248,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	}
 	
 	/**
-	 * Triggered whenever an entity collides with CybertronMod.cybertron_portal; block (enters into the block). Args: world, x, y, z, entity
+	 * Triggered whenever an entity collides with CyberBlocks.cybertron_portal; block (enters into the block). Args: world, x, y, z, entity
 	 */
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
 	{
@@ -258,10 +259,10 @@ public class BlockCybertronPortal extends BlockBreakable {
 			{
 				thePlayer.timeUntilPortal = 10;
 			}
-			else if (thePlayer.dimension != CybertronMod.CYBERTRON_DIMENSION_ID)
+			else if (thePlayer.dimension != CommonProxy.CYBERTRON_DIMENSION_ID)
 			{
 				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, CybertronMod.CYBERTRON_DIMENSION_ID, new TeleporterCybertron(thePlayer.mcServer.worldServerForDimension(CybertronMod.CYBERTRON_DIMENSION_ID)));
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, CommonProxy.CYBERTRON_DIMENSION_ID, new TeleporterCybertron(thePlayer.mcServer.worldServerForDimension(CommonProxy.CYBERTRON_DIMENSION_ID)));
 			}
 			else {
 				thePlayer.timeUntilPortal = 10;
@@ -272,7 +273,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 	
 	@SideOnly(Side.CLIENT)
 	/**
-	 * Returns which pass should CybertronMod.cybertron_portal; block be rendered on. 0 for solids and 1 for alpha
+	 * Returns which pass should CyberBlocks.cybertron_portal; block be rendered on. 0 for solids and 1 for alpha
 	 */
 	public int getRenderBlockPass()
 	{
@@ -301,7 +302,7 @@ public class BlockCybertronPortal extends BlockBreakable {
 			d3 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
 			d4 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
 			d5 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
-			if (par1World.getBlock(par2 - 1, par3, par4) != CybertronMod.cybertron_portal && par1World.getBlock(par2 + 1, par3, par4) != this)
+			if (par1World.getBlock(par2 - 1, par3, par4) != CyberBlocks.cybertron_portal && par1World.getBlock(par2 + 1, par3, par4) != this)
 			{
 				d0 = (double)par2 + 0.5D + 0.25D * (double)i1;
 				d3 = (double)(par5Random.nextFloat() * 2.0F * (float)i1);

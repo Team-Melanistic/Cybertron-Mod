@@ -1,4 +1,4 @@
-package com.melanistic.cybertron.dimension;
+package com.melanistic.cybertron.common.world.dimension;
 
 import com.melanistic.cybertron.CybertronMod;
 

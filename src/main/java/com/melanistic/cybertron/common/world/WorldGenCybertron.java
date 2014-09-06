@@ -1,12 +1,13 @@
-package com.melanistic.cybertron.blocks;
+package com.melanistic.cybertron.common.world;
 
 import java.util.Random;
-
-import com.melanistic.cybertron.CybertronMod;
 
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+
+import com.melanistic.cybertron.common.block.CyberBlocks;
+
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenCybertron implements IWorldGenerator {
@@ -23,7 +24,7 @@ public class WorldGenCybertron implements IWorldGenerator {
 			int cyberOreYCoord = random.nextInt(32);
 			int cyberOreZCoord = j + random.nextInt(16);
 			
-			WorldGenMinable oreGen = new WorldGenMinable(CybertronMod.cybertron_ore, 7);
+			WorldGenMinable oreGen = new WorldGenMinable(CyberBlocks.cybertron_ore, 7);
 			oreGen.generate(world, random, cyberOreXCoord, cyberOreYCoord, cyberOreZCoord);
 		}
 	}

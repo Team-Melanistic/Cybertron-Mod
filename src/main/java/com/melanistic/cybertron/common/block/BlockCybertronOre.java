@@ -1,13 +1,14 @@
-package com.melanistic.cybertron.blocks;
+package com.melanistic.cybertron.common.block;
 
 import java.util.Random;
-
-import com.melanistic.cybertron.CybertronMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+
+import com.melanistic.cybertron.common.item.CyberItems;
+import com.melanistic.cybertron.lib.ModInfo;
 
 public class BlockCybertronOre extends Block {
 	public BlockCybertronOre() {
@@ -16,13 +17,13 @@ public class BlockCybertronOre extends Block {
 		this.setResistance(5.0F);
 		this.setStepSound(soundTypeStone);
 		this.setBlockName("oreCybertron");
-		this.setBlockTextureName(CybertronMod.MODID + ":" + "cybertron_ore");
+		this.setBlockTextureName(ModInfo.MODID + ":" + "cybertron_ore");
 		this.setHarvestLevel("pickaxe", 3);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
 	@Override
 	public Item getItemDropped(int i, Random random, int j) {
-		return CybertronMod.cybertron_crystal;
+		return CyberItems.cybertron_crystal;
 	}
 }
