@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-import com.melanistic.cybertron.common.item.CybertronItems;
+import com.melanistic.cybertron.common.item.CyberItems;
 import com.melanistic.cybertron.lib.CybertronReference;
 
 public class BlockCybertronOre extends Block {
@@ -24,6 +24,6 @@ public class BlockCybertronOre extends Block {
 	
 	@Override
 	public Item getItemDropped(int i, Random random, int j) {
-		return CybertronItems.cybertron_crystal;
+		return CyberItems.cybertron_crystal;
 	}
 }

@@ -1,6 +1,6 @@
 package com.melanistic.cybertron.common.block;
 
-import com.melanistic.cybertron.CybertronMod;
+import com.melanistic.cybertron.Cybertron;
 
 import net.minecraft.block.BlockCompressed;
 import net.minecraft.block.material.MapColor;
@@ -18,7 +18,7 @@ public class BlockReinforcedConcrete extends BlockCompressed {
 
 	public void onBlockAdded(World world, int x, int y, int z)
     {
-        if (!CybertronBlocks.cybertron_portal.tryToCreatePortal(world, x, y, z))
+        if (!CyberBlocks.cybertron_portal.tryToCreatePortal(world, x, y, z))
         {
             if (World.doesBlockHaveSolidTopSurface(world, x, y - 1, z))
             {

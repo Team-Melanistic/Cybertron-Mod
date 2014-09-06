@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.BlockFluidClassic;
 
-import com.melanistic.cybertron.CybertronMod;
+import com.melanistic.cybertron.Cybertron;
 import com.melanistic.cybertron.lib.CybertronReference;
 
 import cpw.mods.fml.relauncher.Side;
@@ -16,7 +16,7 @@ public class BlockEnergon extends BlockFluidClassic {
 	public static IIcon[] icons;
 	
 	public BlockEnergon() {
-		super(CybertronBlocks.energon, Material.water);
+		super(CyberBlocks.energon, Material.water);
 		this.setBlockName("energon");
 	}
 	

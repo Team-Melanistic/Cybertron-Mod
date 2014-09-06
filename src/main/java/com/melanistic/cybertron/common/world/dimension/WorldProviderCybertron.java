@@ -4,14 +4,14 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 
-import com.melanistic.cybertron.common.CybertronCommonProxy;
+import com.melanistic.cybertron.common.CyberCommonProxy;
 
 public class WorldProviderCybertron extends WorldProvider {
 	/**
 	 * creates a new world chunk manager for WorldProvider
 	 */
 	public void registerWorldChunkManager() {
-		this.worldChunkMgr = new WorldChunkManagerHell(CybertronCommonProxy.cybertron_biome, 0.5F);
+		this.worldChunkMgr = new WorldChunkManagerHell(CyberCommonProxy.cybertron_biome, 0.5F);
 		this.isHellWorld = true;
 		this.hasNoSky = false;
 		this.dimensionId = -1;

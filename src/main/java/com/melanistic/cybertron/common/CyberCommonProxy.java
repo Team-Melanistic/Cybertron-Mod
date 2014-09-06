@@ -3,8 +3,8 @@ package com.melanistic.cybertron.common;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
 
-import com.melanistic.cybertron.common.block.CybertronBlocks;
-import com.melanistic.cybertron.common.item.CybertronItems;
+import com.melanistic.cybertron.common.block.CyberBlocks;
+import com.melanistic.cybertron.common.item.CyberItems;
 import com.melanistic.cybertron.common.world.WorldGenCybertron;
 import com.melanistic.cybertron.common.world.dimension.CybertronBiome;
 import com.melanistic.cybertron.common.world.dimension.WorldProviderCybertron;
@@ -12,14 +12,14 @@ import com.melanistic.cybertron.lib.CybertronRecipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class CybertronCommonProxy {
+public class CyberCommonProxy {
 	public static BiomeGenBase cybertron_biome;
 	public static final int CYBERTRON_DIMENSION_ID = 10;
 	
 	public void preInit()
 	{
-		CybertronBlocks.registerBlocks();
-		CybertronItems.registerItems();
+		CyberBlocks.registerBlocks();
+		CyberItems.registerItems();
 	}
 	
 	public void init()

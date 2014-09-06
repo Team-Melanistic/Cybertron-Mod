@@ -3,7 +3,7 @@ package com.melanistic.cybertron.common.item;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class CybertronItems 
+public class CyberItems 
 {
 	
 	public static Item cybertron_crystal;

@@ -1,6 +1,6 @@
 package com.melanistic.cybertron.common.world.dimension;
 
-import com.melanistic.cybertron.CybertronMod;
+import com.melanistic.cybertron.Cybertron;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.BiomeGenBase;

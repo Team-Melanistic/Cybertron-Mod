@@ -1,6 +1,6 @@
 package com.melanistic.cybertron.common.item;
 
-import com.melanistic.cybertron.CybertronMod;
+import com.melanistic.cybertron.Cybertron;
 import com.melanistic.cybertron.lib.CybertronReference;
 
 import net.minecraft.client.renderer.texture.IIconRegister;

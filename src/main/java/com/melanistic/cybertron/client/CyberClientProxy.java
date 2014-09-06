@@ -1,9 +1,9 @@
 package com.melanistic.cybertron.client;
 
-import com.melanistic.cybertron.common.CybertronCommonProxy;
+import com.melanistic.cybertron.common.CyberCommonProxy;
 import com.melanistic.cybertron.lib.CybertronKeyBindings;
 
-public class CybertronClientProxy extends CybertronCommonProxy {
+public class CyberClientProxy extends CyberCommonProxy {
 	public void preInit()
 	{
 		super.preInit();
