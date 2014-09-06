@@ -2,13 +2,20 @@ package com.melanistic.cybertron.common.world;
 
 import java.util.Random;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
+
+import com.melanistic.cybertron.common.utils.StructureFile;
+import com.melanistic.cybertron.lib.CybertronReference;
+
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenTemple implements IWorldGenerator
 {
+	
+	private static StructureFile temple = StructureFile.loadStructure(new ResourceLocation(CybertronReference.MODID, "/structures/OverworldTemple.txt"));
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
@@ -32,14 +39,9 @@ public class WorldGenTemple implements IWorldGenerator
 						}
 					}
 				}
-				generateTemple(random, chunkX, yCoord, chunkZ, world);
+				temple.generateStructureSmoothly(random, chunkX, yCoord, chunkZ, world);
 			}
 		}
-	}
-
-	public void generateTemple(Random random, int x, int y, int z, World world)
-	{
-		
 	}
 	
 }
