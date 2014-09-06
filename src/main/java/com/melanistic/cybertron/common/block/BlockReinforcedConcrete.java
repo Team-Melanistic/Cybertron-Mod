@@ -1,6 +1,7 @@
 package com.melanistic.cybertron.common.block;
 
 import com.melanistic.cybertron.Cybertron;
+import com.melanistic.cybertron.lib.CybertronReference;
 
 import net.minecraft.block.BlockCompressed;
 import net.minecraft.block.material.MapColor;
@@ -12,18 +13,7 @@ public class BlockReinforcedConcrete extends BlockCompressed {
 		this.setHardness(5.0F);
 		this.setResistance(10.0F);
 		this.setStepSound(soundTypeMetal);
-		this.setBlockName("reinforcedConcrete");
-		this.setBlockTextureName("reinforced_concrete");
+		this.setBlockName("concreteReinforced");
+		this.setBlockTextureName(CybertronReference.MODID + ":" + "reinforced_concrete");
 	}
-
-	public void onBlockAdded(World world, int x, int y, int z)
-    {
-        if (!CyberBlocks.cybertron_portal.tryToCreatePortal(world, x, y, z))
-        {
-            if (World.doesBlockHaveSolidTopSurface(world, x, y - 1, z))
-            {
-                world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world) + world.rand.nextInt(10));
-            }
-        }
-    }
 }

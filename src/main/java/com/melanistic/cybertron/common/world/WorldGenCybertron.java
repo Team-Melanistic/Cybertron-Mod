@@ -24,7 +24,7 @@ public class WorldGenCybertron implements IWorldGenerator {
 			int cyberOreYCoord = random.nextInt(32);
 			int cyberOreZCoord = j + random.nextInt(16);
 			
-			WorldGenMinable oreGen = new WorldGenMinable(CyberBlocks.cybertron_ore, 7);
+			WorldGenMinable oreGen = new WorldGenMinable(CyberBlocks.transformium_ore, 7);
 			oreGen.generate(world, random, cyberOreXCoord, cyberOreYCoord, cyberOreZCoord);
 		}
 	}
