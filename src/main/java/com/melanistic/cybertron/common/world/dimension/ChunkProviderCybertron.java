@@ -19,7 +19,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-import com.melanistic.cybertron.common.block.CyberBlocks;
+import com.melanistic.cybertron.common.block.CybertronBlocks;
 
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
@@ -117,12 +117,12 @@ public class ChunkProviderCybertron implements IChunkProvider
 
                                 if (k1 * 8 + l1 < b1)
                                 {
-                                    block = CyberBlocks.energon_block;
+                                    block = CybertronBlocks.energon_block;
                                 }
 
                                 if (d15 > 0.0D)
                                 {
-                                    block = CyberBlocks.reinforced_concrete;
+                                    block = CybertronBlocks.reinforced_concrete;
                                 }
 
                                 p_147419_3_[j2] = block;
@@ -160,8 +160,8 @@ public class ChunkProviderCybertron implements IChunkProvider
             {
                 int i1 = (int)(this.concreteExclusivityNoise[k + l * 16] / 3.0D + 3.0D + this.cybertronRNG.nextDouble() * 0.25D);
                 int j1 = -1;
-                Block block = CyberBlocks.reinforced_concrete;
-                Block block1 = CyberBlocks.reinforced_concrete;
+                Block block = CybertronBlocks.reinforced_concrete;
+                Block block1 = CybertronBlocks.reinforced_concrete;
 
                 for (int k1 = 127; k1 >= 0; --k1)
                 {
@@ -173,24 +173,24 @@ public class ChunkProviderCybertron implements IChunkProvider
 
                         if (block2 != null && block2.getMaterial() != Material.air)
                         {
-                            if (block2 == CyberBlocks.reinforced_concrete)
+                            if (block2 == CybertronBlocks.reinforced_concrete)
                             {
                                 if (j1 == -1)
                                 {
                                     if (i1 <= 0)
                                     {
                                         block = null;
-                                        block1 = CyberBlocks.reinforced_concrete;
+                                        block1 = CybertronBlocks.reinforced_concrete;
                                     }
                                     else if (k1 >= b0 - 4 && k1 <= b0 + 1)
                                     {
-                                        block = CyberBlocks.reinforced_concrete;
-                                        block1 = CyberBlocks.reinforced_concrete;
+                                        block = CybertronBlocks.reinforced_concrete;
+                                        block1 = CybertronBlocks.reinforced_concrete;
                                     }
 
                                     if (k1 < b0 && (block == null || block.getMaterial() == Material.air))
                                     {
-                                        block = CyberBlocks.energon_block;
+                                        block = CybertronBlocks.energon_block;
                                     }
 
                                     j1 = i1;

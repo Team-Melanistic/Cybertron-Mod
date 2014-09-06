@@ -5,9 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
-public class CyberBlocks
-{
-	
+public class CybertronBlocks {
 	public static BlockCybertronPortal cybertron_portal;
 	public static Block reinforced_concrete;
 	public static Block cybertron_ore;
@@ -31,5 +29,4 @@ public class CyberBlocks
 		energon_block = new BlockEnergon();
 		GameRegistry.registerBlock(energon_block, "energon_block");
 	}
-
 }

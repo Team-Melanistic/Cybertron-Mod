@@ -8,15 +8,14 @@ import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 
-public class Keys {
+public class CybertronKeyBindings {
 	
 	private static KeyBinding[] keyList = new KeyBinding[5];;
 	private static byte number = 0;
 	
 	public static void registerKeys()
 	{
-		//example code
-		//addKey("key.jump", Keyboard.KEY_SPACEBAR);
+		
 	}
 	
 	static void addKey(String name, int value)

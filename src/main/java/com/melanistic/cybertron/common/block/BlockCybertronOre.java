@@ -7,8 +7,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-import com.melanistic.cybertron.common.item.CyberItems;
-import com.melanistic.cybertron.lib.ModInfo;
+import com.melanistic.cybertron.common.item.CybertronItems;
+import com.melanistic.cybertron.lib.CybertronReference;
 
 public class BlockCybertronOre extends Block {
 	public BlockCybertronOre() {
@@ -17,13 +17,13 @@ public class BlockCybertronOre extends Block {
 		this.setResistance(5.0F);
 		this.setStepSound(soundTypeStone);
 		this.setBlockName("oreCybertron");
-		this.setBlockTextureName(ModInfo.MODID + ":" + "cybertron_ore");
+		this.setBlockTextureName(CybertronReference.MODID + ":" + "cybertron_ore");
 		this.setHarvestLevel("pickaxe", 3);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
 	@Override
 	public Item getItemDropped(int i, Random random, int j) {
-		return CyberItems.cybertron_crystal;
+		return CybertronItems.cybertron_crystal;
 	}
 }

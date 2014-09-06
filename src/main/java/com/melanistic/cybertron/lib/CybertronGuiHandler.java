@@ -9,20 +9,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
-public class Containers implements IGuiHandler
-{
-
+public class CybertronGuiHandler implements IGuiHandler {
 	private static Map<Integer, Class<? extends Container>> serverGui = new HashMap<Integer, Class<? extends Container>>();
 	private static Map<Integer, Class<? extends GuiScreen>> clientGui = new HashMap<Integer, Class<? extends GuiScreen>>();
-	
-	//example code
-	//public static int FURNACE = 0;
-	
-	static
-	{
-		//example code
-		//put(FURNACE, ContainerFurnace.class, GuiFurnace.class);
-	}
 
 	private static void put(int id, Class<? extends Container> serverClass, Class<? extends GuiScreen> clientClass)
 	{
@@ -63,5 +52,4 @@ public class Containers implements IGuiHandler
 		}
 		return null;
 	}
-
 }

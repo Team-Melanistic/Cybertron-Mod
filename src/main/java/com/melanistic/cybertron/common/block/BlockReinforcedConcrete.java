@@ -18,7 +18,7 @@ public class BlockReinforcedConcrete extends BlockCompressed {
 
 	public void onBlockAdded(World world, int x, int y, int z)
     {
-        if (!CyberBlocks.cybertron_portal.tryToCreatePortal(world, x, y, z))
+        if (!CybertronBlocks.cybertron_portal.tryToCreatePortal(world, x, y, z))
         {
             if (World.doesBlockHaveSolidTopSurface(world, x, y - 1, z))
             {

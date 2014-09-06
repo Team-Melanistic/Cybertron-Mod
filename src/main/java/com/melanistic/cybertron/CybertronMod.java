@@ -1,8 +1,8 @@
 package com.melanistic.cybertron;
 
-import com.melanistic.cybertron.common.CommonProxy;
-import com.melanistic.cybertron.lib.Containers;
-import com.melanistic.cybertron.lib.ModInfo;
+import com.melanistic.cybertron.common.CybertronCommonProxy;
+import com.melanistic.cybertron.lib.CybertronGuiHandler;
+import com.melanistic.cybertron.lib.CybertronReference;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -12,12 +12,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-@Mod(modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION)
-public class CybertronMod 
-{
-	
+@Mod(modid = CybertronReference.MODID, name = CybertronReference.MODNAME, version = CybertronReference.VERSION)
+public class CybertronMod {
 	@SidedProxy(clientSide = "com.melanistic.cybertron.client.ClientProxy", serverSide = "com.melanistic.cybertron.common.CommonProxy")
-	public CommonProxy proxy;
+	public CybertronCommonProxy proxy;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -28,7 +26,7 @@ public class CybertronMod
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		NetworkRegistry.INSTANCE.registerGuiHandler(ModInfo.MODID, new Containers());
+		NetworkRegistry.INSTANCE.registerGuiHandler(CybertronReference.MODID, new CybertronGuiHandler());
 		proxy.init();
 	}
 	
