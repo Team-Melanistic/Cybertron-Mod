@@ -5,7 +5,6 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
-<<<<<<< HEAD
 import com.melanistic.cybertron.common.block.item.ItemBlockTemple;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,11 +12,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CyberBlocks
 {
 	
-	public static BlockCybertronPortal cybertron_portal;
-=======
-public class CyberBlocks {
 	public static BlockTransformiumPortal transformium_portal;
->>>>>>> 783d4638fecc6b345e854f88237e50f7fd524efb
 	public static Block reinforced_concrete;
 	public static Block transformium_ore;
 	public static Block transformium_block;
