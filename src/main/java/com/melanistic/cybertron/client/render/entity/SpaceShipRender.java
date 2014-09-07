@@ -1,10 +1,11 @@
 package com.melanistic.cybertron.client.render.entity;
 
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderSpaceShip extends Render
+import com.melanistic.cybertron.client.render.EntityRender;
+
+public class SpaceShipRender extends EntityRender
 {
 
 	@Override
