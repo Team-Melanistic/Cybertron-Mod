@@ -11,7 +11,7 @@ import com.melanistic.cybertron.common.item.CyberItems;
 import com.melanistic.cybertron.common.world.WorldGenCybertron;
 import com.melanistic.cybertron.common.world.dimension.CybertronBiome;
 import com.melanistic.cybertron.common.world.dimension.WorldProviderCybertron;
-import com.melanistic.cybertron.lib.CybertronRecipes;
+import com.melanistic.cybertron.lib.CyberRecipes;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -45,7 +45,7 @@ public class CyberCommonProxy
 	
 	public void postInit()
 	{
-		CybertronRecipes.initRecipes();
+		CyberRecipes.initRecipes();
 	}
 
 	private void registerEntitys() 

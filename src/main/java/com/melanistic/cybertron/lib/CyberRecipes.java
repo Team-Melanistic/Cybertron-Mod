@@ -1,6 +1,6 @@
 package com.melanistic.cybertron.lib;
 
-public class CybertronRecipes {
+public class CyberRecipes {
 	public static void initRecipes()
 	{
 		registerBasicRecipes();

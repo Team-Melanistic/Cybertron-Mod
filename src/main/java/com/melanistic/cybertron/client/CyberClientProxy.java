@@ -3,7 +3,7 @@ package com.melanistic.cybertron.client;
 import com.melanistic.cybertron.client.render.entity.RenderHumanBorg;
 import com.melanistic.cybertron.common.CyberCommonProxy;
 import com.melanistic.cybertron.common.entity.EntityHumanborg;
-import com.melanistic.cybertron.lib.CybertronKeyBindings;
+import com.melanistic.cybertron.lib.CyberKeyBindings;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -22,7 +22,7 @@ public class CyberClientProxy extends CyberCommonProxy
 	public void init()
 	{
 		super.init();
-		CybertronKeyBindings.registerKeys();
+		CyberKeyBindings.registerKeys();
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityHumanborg.class, new RenderHumanBorg());
 	}

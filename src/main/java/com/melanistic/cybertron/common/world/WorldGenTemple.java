@@ -8,14 +8,14 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 
 import com.melanistic.cybertron.common.utils.StructureFile;
-import com.melanistic.cybertron.lib.CybertronReference;
+import com.melanistic.cybertron.lib.CyberReference;
 
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenTemple implements IWorldGenerator
 {
 	
-	private static StructureFile temple = StructureFile.loadStructure(new ResourceLocation(CybertronReference.MODID, "/structures/OverworldTemple.txt"));
+	private static StructureFile temple = StructureFile.loadStructure(new ResourceLocation(CyberReference.MODID, "/structures/OverworldTemple.txt"));
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 

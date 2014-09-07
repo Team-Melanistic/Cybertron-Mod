@@ -4,8 +4,8 @@ import com.melanistic.cybertron.client.render.entity.RenderHumanBorg;
 import com.melanistic.cybertron.common.CyberCommonProxy;
 import com.melanistic.cybertron.common.entity.EntityHumanborg;
 import com.melanistic.cybertron.common.entity.EntitySkeletron;
-import com.melanistic.cybertron.lib.CybertronGuiHandler;
-import com.melanistic.cybertron.lib.CybertronReference;
+import com.melanistic.cybertron.lib.CyberGuiHandler;
+import com.melanistic.cybertron.lib.CyberReference;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
@@ -20,14 +20,14 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = CybertronReference.MODID, name = CybertronReference.MODNAME, version = CybertronReference.VERSION)
+@Mod(modid = CyberReference.MODID, name = CyberReference.MODNAME, version = CyberReference.VERSION)
 public class Cybertron 
 {
 	
 	@SidedProxy(clientSide = "com.melanistic.cybertron.client.CyberClientProxy", serverSide = "com.melanistic.cybertron.common.CyberCommonProxy")
 	public static CyberCommonProxy proxy;
 	
-	@Instance(CybertronReference.MODID)
+	@Instance(CyberReference.MODID)
 	public static Cybertron instance;
 	
 	@EventHandler
@@ -40,7 +40,7 @@ public class Cybertron
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		NetworkRegistry.INSTANCE.registerGuiHandler(CybertronReference.MODID, new CybertronGuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(CyberReference.MODID, new CyberGuiHandler());
 		proxy.init();
 	}
 	

@@ -8,7 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 import com.melanistic.cybertron.common.item.CyberItems;
-import com.melanistic.cybertron.lib.CybertronReference;
+import com.melanistic.cybertron.lib.CyberReference;
 
 public class BlockTransformiumOre extends Block {
 	public BlockTransformiumOre() {
@@ -17,7 +17,7 @@ public class BlockTransformiumOre extends Block {
 		this.setResistance(5.0F);
 		this.setStepSound(soundTypeStone);
 		this.setBlockName("oreTransformium");
-		this.setBlockTextureName(CybertronReference.MODID + ":" + "transformium_ore");
+		this.setBlockTextureName(CyberReference.MODID + ":" + "transformium_ore");
 		this.setHarvestLevel("pickaxe", 3);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}

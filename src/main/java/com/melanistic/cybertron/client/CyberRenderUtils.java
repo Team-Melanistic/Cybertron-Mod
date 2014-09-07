@@ -5,14 +5,14 @@ import net.minecraft.util.ResourceLocation;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class RenderUtils 
+public class CyberRenderUtils 
 {
 	
 	public static Tessellator tessellator = Tessellator.instance;
 	
 	public static void bind(ResourceLocation res)
 	{
-		ClientUtils.getMC().getTextureManager().bindTexture(res);
+		CyberClientUtils.getMC().getTextureManager().bindTexture(res);
 	}
 	
 	public static void enableDepth()

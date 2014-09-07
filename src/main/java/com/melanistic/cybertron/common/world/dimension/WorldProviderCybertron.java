@@ -13,7 +13,7 @@ public class WorldProviderCybertron extends WorldProvider {
 	public void registerWorldChunkManager() {
 		this.worldChunkMgr = new WorldChunkManagerHell(CyberCommonProxy.cybertron_biome, 0.5F);
 		this.isHellWorld = true;
-		this.hasNoSky = false;
+		this.hasNoSky = true;
 		this.dimensionId = -1;
 	}
 

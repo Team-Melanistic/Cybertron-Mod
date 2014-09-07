@@ -1,7 +1,7 @@
 package com.melanistic.cybertron.common.item;
 
 import com.melanistic.cybertron.Cybertron;
-import com.melanistic.cybertron.lib.CybertronReference;
+import com.melanistic.cybertron.lib.CyberReference;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,7 +14,7 @@ public class ItemTransformiumShard extends Item {
 	{
 		super();
 		this.setUnlocalizedName("shardTransformium");
-		this.setTextureName(CybertronReference.MODID + "transformium_shard");
+		this.setTextureName(CyberReference.MODID + "transformium_shard");
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 }

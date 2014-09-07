@@ -11,18 +11,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-public class ClientUtils 
+public class CyberClientUtils 
 {
 	
 	private static Minecraft mc = Minecraft.getMinecraft();
-	
-	public static final CreativeTabs tempusTab = new CreativeTabs("Cybertron")
-	{
-		public Item getTabIconItem()
-		{
-			return Items.potionitem;
-		}
-	};
 
 	public static Minecraft getMC()
 	{
@@ -47,11 +39,6 @@ public class ClientUtils
 	public static EntityRenderer getRenderer()
 	{
 		return mc.entityRenderer;
-	}
-
-	public static ScaledResolution getResolution()
-	{
-		return new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 	}
 
 	public static Entity getEntityByID(int id)

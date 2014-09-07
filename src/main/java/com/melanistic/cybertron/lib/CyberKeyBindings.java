@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 
-public class CybertronKeyBindings {
+public class CyberKeyBindings {
 	
 	private static KeyBinding[] keyList = new KeyBinding[5];;
 	private static byte number = 0;

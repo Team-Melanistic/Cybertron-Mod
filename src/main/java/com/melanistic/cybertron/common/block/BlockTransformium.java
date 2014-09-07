@@ -1,10 +1,10 @@
 package com.melanistic.cybertron.common.block;
 
-import com.melanistic.cybertron.Cybertron;
-
 import net.minecraft.block.BlockCompressed;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.world.World;
+
+import com.melanistic.cybertron.lib.CyberReference;
 
 public class BlockTransformium extends BlockCompressed {
 	public BlockTransformium() {
@@ -13,7 +13,7 @@ public class BlockTransformium extends BlockCompressed {
 		this.setResistance(10.0F);
 		this.setStepSound(soundTypeMetal);
 		this.setBlockName("blockTransformium");
-		this.setBlockTextureName("transformium");
+		this.setBlockTextureName(CyberReference.MODID + ":" + "transformium_block");
 	}
 	
 	public void onBlockAdded(World world, int x, int y, int z)

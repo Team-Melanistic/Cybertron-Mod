@@ -6,7 +6,7 @@ import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.BlockFluidClassic;
 
 import com.melanistic.cybertron.Cybertron;
-import com.melanistic.cybertron.lib.CybertronReference;
+import com.melanistic.cybertron.lib.CyberReference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -25,8 +25,8 @@ public class BlockEnergon extends BlockFluidClassic {
 	public void registerBlockIcons(IIconRegister icon) {
 		icons = new IIcon[2];
 
-		icons[0] = icon.registerIcon(CybertronReference.MODID + ":" + "energon_still");
-		icons[1] = icon.registerIcon(CybertronReference.MODID + ":" + "energon_flow");
+		icons[0] = icon.registerIcon(CyberReference.MODID + ":" + "energon_still");
+		icons[1] = icon.registerIcon(CyberReference.MODID + ":" + "energon_flow");
 	}
 	
 	@SideOnly(Side.CLIENT)
