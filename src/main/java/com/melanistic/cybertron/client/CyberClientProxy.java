@@ -1,9 +1,19 @@
 package com.melanistic.cybertron.client;
 
+import com.melanistic.cybertron.client.render.entity.RenderHumanBorg;
 import com.melanistic.cybertron.common.CyberCommonProxy;
+import com.melanistic.cybertron.common.entity.EntityHumanborg;
 import com.melanistic.cybertron.lib.CybertronKeyBindings;
 
-public class CyberClientProxy extends CyberCommonProxy {
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class CyberClientProxy extends CyberCommonProxy 
+{
+	
 	public void preInit()
 	{
 		super.preInit();
@@ -13,5 +23,7 @@ public class CyberClientProxy extends CyberCommonProxy {
 	{
 		super.init();
 		CybertronKeyBindings.registerKeys();
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityHumanborg.class, new RenderHumanBorg());
 	}
 }
