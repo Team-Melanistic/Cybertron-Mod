@@ -1,0 +1,12 @@
+//This is an example as to how to create structures using the StructureFile.java
+//I actually use this file though so please don't mess with it
+//Any suggestions for additions please ask
+//Use the // at the start of a line and it ignores it
+
+//SIZE is used to define the size of the structure, not necessary though recommended. It should be half of the actual size (except for y)
+//all structures should be oddly sized
+SIZE 12 25 12
+FOUNDATION sand
+BLOCK sandstone
+CUBE -12 12 0 0 -12 12
+

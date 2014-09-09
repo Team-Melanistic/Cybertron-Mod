@@ -6,9 +6,9 @@ import net.minecraft.block.material.Material;
 public class BlockTemple extends Block
 {
 
-	protected BlockTemple(Material p_i45394_1_)
+	public BlockTemple()
 	{
-		super(p_i45394_1_);
+		super(Material.iron);
 	}
 
 }

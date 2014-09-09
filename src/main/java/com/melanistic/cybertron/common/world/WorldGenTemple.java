@@ -20,7 +20,7 @@ public class WorldGenTemple implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{
-		if(world.provider.dimensionId == 0)
+		if(world.provider.dimensionId == 0 && random.nextFloat() > .94f)
 		{
 			chunkX = chunkX * 16 + random.nextInt(16);
 			chunkZ = chunkZ * 16 + random.nextInt(16);
