@@ -7,6 +7,7 @@ import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public class EntityHumanborg extends EntityMob
@@ -38,11 +39,13 @@ public class EntityHumanborg extends EntityMob
 		return null;
 	}
 
+	
 	@Override
 	public void onUpdate()
 	{
 		super.onUpdate();
-		entityToAttack = null;
+		if(entityToAttack instanceof EntityPlayer)
+			entityToAttack = null;
 	}
 
 }
