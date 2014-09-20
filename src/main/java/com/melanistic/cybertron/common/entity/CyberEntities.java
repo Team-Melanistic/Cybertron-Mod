@@ -21,7 +21,7 @@ public class CyberEntities
 
 	public static void registerEntities()
 	{
-		HUMANBORG_ID = EntityRegistry.findGlobalUniqueEntityId();
+		HUMANBORG_ID = EntityRegistry.findGlobalUniqueEntityId(); //return the same ID until the ID is used
 		initEntity(EntityHumanborg.class, HUMANBORG_ID, 0x00A0A0, 0x698C55);
 		SKELETRON_ID = EntityRegistry.findGlobalUniqueEntityId();
 		initEntity(EntitySkeletron.class, SKELETRON_ID, 0xacacac, 0x0b0b0b);
