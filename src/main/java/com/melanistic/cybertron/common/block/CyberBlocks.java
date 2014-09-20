@@ -18,7 +18,12 @@ public class CyberBlocks
 
 	/** Fluid object of energon */
 	public static Fluid energon = new Fluid("energon").setViscosity(2000);
-
+	
+	static
+	{
+		FluidRegistry.registerFluid(energon);
+	}
+	
 	/** Block object of energon */
 	public static Block energonBlock = new BlockEnergon();
 
@@ -42,7 +47,7 @@ public class CyberBlocks
 
 	private static void initFluid(Fluid fluid, Block block)
 	{
-		FluidRegistry.registerFluid(fluid);
+		
 		GameRegistry.registerBlock(block, block.getUnlocalizedName());
 	}
 
