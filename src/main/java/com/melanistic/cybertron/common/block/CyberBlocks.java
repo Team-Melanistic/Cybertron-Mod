@@ -45,12 +45,6 @@ public class CyberBlocks
 		}
 	}
 
-	private static void initFluid(Fluid fluid, Block block)
-	{
-		
-		GameRegistry.registerBlock(block, block.getUnlocalizedName());
-	}
-
 	public static void registerBlocks()
 	{
 		initBlock(cyberPortal);
@@ -58,6 +52,6 @@ public class CyberBlocks
 		initBlock(ores);
 		initBlock(templeBlocks);
 
-		initFluid(energon, energonBlock);
+		initBlock(energonBlock);
 	}
 }

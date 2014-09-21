@@ -1,5 +1,6 @@
 package com.melanistic.cybertron.lib;
 
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -25,6 +26,7 @@ public class CyberTecHandler
 	public static void setTecLevel(Item item, byte level)
 	{
 		tecMap.put(item, level);
+		System.out.println(String.format("Set TevLevel %s for %s",level,item));
 	}
 
 	public static byte getTecLevelFormItem(Item item)
@@ -45,8 +47,11 @@ public class CyberTecHandler
 	{
 		return getTecLevelFormItem(item) <= getTecLevelFromPlayer(player);
 	}
-	
-	private void loadTecFromFile(Reader in)
+	/**
+	 * Json Format like: {"minecarft:bow":600}
+	 * @param in uses a Simple {@link Reader} or an {@link InputStream} with {@link InputStreamReader}
+	 */
+	private static void loadTecFromFile(Reader in)
 	{
 		Gson gson = new Gson();
 		JsonElement base = gson.fromJson(in, JsonElement.class);
@@ -56,7 +61,7 @@ public class CyberTecHandler
 			System.err.println("Wrong Json-Format");
 	}
 	
-	private void readTecLevels(JsonObject obj)
+	private static void readTecLevels(JsonObject obj)
 	{
 		for(Entry<String, JsonElement> e : obj.entrySet())
 		{
@@ -79,5 +84,10 @@ public class CyberTecHandler
 				}
 			}
 		}
+	}
+	
+	public static void main(String[] args) 
+	{
+		loadTecFromFile(null);
 	}
 }
