@@ -16,11 +16,11 @@ public class EntityCarrier extends EntityMob
 	{
 		super(w);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
-		tasks.addTask(7, new EntityAIWander(this, 1.0D));
+		tasks.addTask(1, new EntityAIMoveTowardsRestriction(this, 1.0D));
+		tasks.addTask(2, new EntityAIWander(this, 1.0D));
 
-		tasks.addTask(8, new EntityAILookIdle(this));
-		setSize(0.9F, 0.3F);
+		//tasks.addTask(8, new EntityAILookIdle(this));
+		setSize(0.8F, 1F);
 	}
 
 	@Override

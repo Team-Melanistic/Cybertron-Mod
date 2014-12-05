@@ -17,7 +17,7 @@ public class CyberEntities
 
 	private static void initEntity(Class<? extends Entity> entityClass, int id, int colorA, int colorB)
 	{
-		EntityRegistry.registerGlobalEntityID(entityClass, entityClass.getName(), id, colorA, colorB);
+		EntityRegistry.registerGlobalEntityID(entityClass, entityClass.getSimpleName(), id, colorA, colorB);
 	}
 
 	public static void registerEntities()
