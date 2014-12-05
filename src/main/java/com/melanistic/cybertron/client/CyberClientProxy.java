@@ -1,7 +1,9 @@
 package com.melanistic.cybertron.client;
 
+import com.melanistic.cybertron.client.render.entity.RenderCarrier;
 import com.melanistic.cybertron.client.render.entity.RenderHumanBorg;
 import com.melanistic.cybertron.common.CyberCommonProxy;
+import com.melanistic.cybertron.common.entity.EntityCarrier;
 import com.melanistic.cybertron.common.entity.EntityHumanborg;
 import com.melanistic.cybertron.lib.CyberKeyBindings;
 
@@ -25,5 +27,6 @@ public class CyberClientProxy extends CyberCommonProxy
 		CyberKeyBindings.registerKeys();
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityHumanborg.class, new RenderHumanBorg());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCarrier.class, new RenderCarrier());
 	}
 }
