@@ -29,6 +29,9 @@ public class CyberTecHandler
 		System.out.println(String.format("Set TevLevel %s for %s",level,item));
 	}
 
+	/**
+	 * Get the TecLevel from the Item
+	 */
 	public static byte getTecLevelFormItem(Item item)
 	{
 		if(tecMap.containsKey(item))
@@ -38,11 +41,19 @@ public class CyberTecHandler
 		return 0;
 	}
 	
+	/**
+	 * Get the TecLevel from the Player
+	 */
 	public static byte getTecLevelFromPlayer(EntityPlayer player)
 	{
 		return 0;
 	}
 	
+	/**
+	 * @param item the Item.
+	 * @param player the Player.
+	 * @return if the Players TecLevel is High enough to use the Item.
+	 */
 	public static boolean canPlayerUseItem(Item item, EntityPlayer player)
 	{
 		return getTecLevelFormItem(item) <= getTecLevelFromPlayer(player);

@@ -1,11 +1,14 @@
 package com.melanistic.cybertron;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 
 import com.melanistic.cybertron.client.render.entity.RenderHumanBorg;
 import com.melanistic.cybertron.common.CyberCommonProxy;
+import com.melanistic.cybertron.common.entity.EntityDeathLiving;
 import com.melanistic.cybertron.common.entity.EntityHumanborg;
 import com.melanistic.cybertron.common.entity.EntitySkeletron;
 import com.melanistic.cybertron.lib.CyberGuiHandler;
@@ -51,6 +54,7 @@ public class Cybertron
 		proxy.init();
 	}
 	
+	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) 
 	{
@@ -68,5 +72,14 @@ public class Cybertron
 				e.setCanceled(true);
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void onLivingDeath(LivingDeathEvent e)
+	{
+		EntityLivingBase live = e.entityLiving;
+		EntityDeathLiving death = new EntityDeathLiving(live);
+		live.worldObj.spawnEntityInWorld(death);
+		System.out.println(live.worldObj);
 	}
 }
