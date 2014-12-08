@@ -13,6 +13,7 @@ import com.google.gson.stream.JsonReader;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /**
  * This class handles the Tec Level from the Items
@@ -32,11 +33,19 @@ public class CyberTecHandler
 	/**
 	 * Get the TecLevel from the Item
 	 */
-	public static byte getTecLevelFormItem(Item item)
+	public static byte getTecLevelFormItem(ItemStack it)
 	{
-		if(tecMap.containsKey(item))
+		if(it!=null)
 		{
-			return tecMap.get(item);
+			Item item = it.getItem();
+			if(item instanceof ICustomTecLevel)
+			{
+				return ((ICustomTecLevel)item).getTecLevel(it);
+			}
+			if(tecMap.containsKey(item))
+			{
+				return tecMap.get(item);
+			}
 		}
 		return 0;
 	}
@@ -54,10 +63,11 @@ public class CyberTecHandler
 	 * @param player the Player.
 	 * @return if the Players TecLevel is High enough to use the Item.
 	 */
-	public static boolean canPlayerUseItem(Item item, EntityPlayer player)
+	public static boolean canPlayerUseItem(ItemStack item, EntityPlayer player)
 	{
 		return getTecLevelFormItem(item) <= getTecLevelFromPlayer(player);
 	}
+	
 	/**
 	 * Json Format like: {"minecarft:bow":600}
 	 * @param in uses a Simple {@link Reader} or an {@link InputStream} with {@link InputStreamReader}

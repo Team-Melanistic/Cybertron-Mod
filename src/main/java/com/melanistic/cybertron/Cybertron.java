@@ -1,9 +1,14 @@
 package com.melanistic.cybertron;
 
+import java.util.Arrays;
+import java.util.List;
+
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 
 import com.melanistic.cybertron.client.render.entity.RenderHumanBorg;
@@ -44,13 +49,13 @@ public class Cybertron
 	{
 		instance = this;
 		proxy.preInit();
-		MinecraftForge.EVENT_BUS.register(instance);
+		MinecraftForge.EVENT_BUS.register(this);
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new CyberGuiHandler());
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		NetworkRegistry.INSTANCE.registerGuiHandler(CyberReference.MODID, new CyberGuiHandler());
 		proxy.init();
 	}
 	
@@ -64,8 +69,7 @@ public class Cybertron
 	@SubscribeEvent
 	public void onPlayerUsingItem(PlayerUseItemEvent e)
 	{
-		Item i = e.item.getItem();
-		if(!CyberTecHandler.canPlayerUseItem(i, e.entityPlayer))
+		if(!CyberTecHandler.canPlayerUseItem(e.item, e.entityPlayer))
 		{
 			if(e.isCancelable())
 			{
@@ -78,8 +82,35 @@ public class Cybertron
 	public void onLivingDeath(LivingDeathEvent e)
 	{
 		EntityLivingBase live = e.entityLiving;
-		EntityDeathLiving death = new EntityDeathLiving(live);
-		live.worldObj.spawnEntityInWorld(death);
-		System.out.println(live.worldObj);
+		if(!live.worldObj.isRemote)
+		{
+			EntityDeathLiving death = new EntityDeathLiving(live);
+			live.worldObj.spawnEntityInWorld(death);
+			live.worldObj.unloadEntities(Arrays.asList(live));
+		}
+	}
+	
+	@SubscribeEvent
+	public void onLivingDeath(LivingDropsEvent e)
+	{
+		EntityLivingBase live = e.entityLiving;
+		if(!live.worldObj.isRemote)
+		{
+			List<EntityDeathLiving> l = live.worldObj.getEntitiesWithinAABB(EntityDeathLiving.class, live.boundingBox);
+			for(EntityDeathLiving death : l)
+			{
+				if(death.living==live)
+				{
+					for(int i=0;i<Math.min(death.getSizeInventory(), e.drops.size());i++)
+					{
+						EntityItem it =  e.drops.get(i);
+						death.setInventorySlotContents(i, it.getEntityItem());
+						it.setDead();
+					}
+					e.setCanceled(true);
+					return;
+				}
+			}
+		}
 	}
 }

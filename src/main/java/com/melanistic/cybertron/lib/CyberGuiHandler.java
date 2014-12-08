@@ -1,7 +1,10 @@
 package com.melanistic.cybertron.lib;
 
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.melanistic.cybertron.client.gui.GuiLooting;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +16,11 @@ public class CyberGuiHandler implements IGuiHandler
 {
 	private static Map<Integer, Class<? extends Container>> serverGui = new HashMap<Integer, Class<? extends Container>>();
 	private static Map<Integer, Class<? extends GuiScreen>> clientGui = new HashMap<Integer, Class<? extends GuiScreen>>();
-
+	
+	static
+	{
+		put(1, GuiLooting.ContainerLooting.class, GuiLooting.class);
+	}
 	private static void put(int id, Class<? extends Container> serverClass, Class<? extends GuiScreen> clientClass)
 	{
 		serverGui.put(id, serverClass);
@@ -27,7 +34,8 @@ public class CyberGuiHandler implements IGuiHandler
 		{
 			try 
 			{
-				return (Container) container.getConstructors()[0].newInstance(player, world, x, y, z);
+				Constructor<? extends Container> con = container.getConstructor(EntityPlayer.class,World.class,int.class,int.class,int.class);				
+				return (Container) con.newInstance(player, world, x, y, z);
 			} 
 			catch (Exception e)
 			{
@@ -44,7 +52,8 @@ public class CyberGuiHandler implements IGuiHandler
 		{
 			try 
 			{
-				return (GuiScreen) container.getConstructors()[0].newInstance(player, world, x, y, z);
+				Constructor<? extends GuiScreen> con = container.getConstructor(EntityPlayer.class,World.class,int.class,int.class,int.class);				
+				return (GuiScreen) con.newInstance(player, world, x, y, z);
 			} 
 			catch (Exception e)
 			{
