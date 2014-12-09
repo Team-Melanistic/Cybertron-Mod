@@ -1,14 +1,8 @@
 package com.melanistic.cybertron.client.render.entity;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.model.ModelZombie;
-import net.minecraft.client.model.ModelZombieVillager;
 import net.minecraft.client.renderer.entity.RenderBiped;
-import net.minecraft.client.renderer.entity.RenderZombie;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.util.ResourceLocation;
 

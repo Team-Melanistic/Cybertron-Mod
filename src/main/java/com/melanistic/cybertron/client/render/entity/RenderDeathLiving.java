@@ -1,18 +1,12 @@
 package com.melanistic.cybertron.client.render.entity;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import org.lwjgl.opengl.GL11;
-
-import com.melanistic.cybertron.Cybertron;
-import com.melanistic.cybertron.client.CyberClientProxy;
-import com.melanistic.cybertron.common.entity.EntityDeathLiving;
-
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+
+import org.lwjgl.opengl.GL11;
+
+import com.melanistic.cybertron.common.entity.EntityDeathLiving;
 
 public class RenderDeathLiving extends RenderEntity
 {

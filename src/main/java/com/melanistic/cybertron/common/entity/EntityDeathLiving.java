@@ -1,33 +1,23 @@
 package com.melanistic.cybertron.common.entity;
 
-import java.util.List;
-
-import com.melanistic.cybertron.Cybertron;
-import com.melanistic.cybertron.lib.CyberReference;
-
-import tv.twitch.chat.ChatMessage;
-import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-public class EntityDeathLiving extends Entity implements IInventory
+import com.melanistic.cybertron.Cybertron;
+
+public class EntityDeathLiving extends Entity implements ISidedInventory
 {
 	public EntityLivingBase living = null;
 	public int deathTime = 0;
@@ -184,15 +174,51 @@ public class EntityDeathLiving extends Entity implements IInventory
 	}
 
 	@Override
-	public ItemStack decrStackSize(int p_70298_1_, int p_70298_2_) 
+	public ItemStack decrStackSize(int i, int p_70298_2_) 
 	{
-		return null;
+		if (this.items[i] != null)
+        {
+            ItemStack itemstack;
+
+            if (this.items[i].stackSize <= p_70298_2_)
+            {
+                itemstack = this.items[i];
+                this.items[i] = null;
+                this.markDirty();
+                return itemstack;
+            }
+            else
+            {
+                itemstack = this.items[i].splitStack(p_70298_2_);
+
+                if (this.items[i].stackSize == 0)
+                {
+                    this.items[i] = null;
+                }
+
+                this.markDirty();
+                return itemstack;
+            }
+        }
+        else
+        {
+            return null;
+        }
 	}
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int i)
 	{
-		return items[i];
+		if (this.items[i] != null)
+        {
+            ItemStack itemstack = this.items[i];
+            this.items[i] = null;
+            return itemstack;
+        }
+        else
+        {
+            return null;
+        }
 	}
 
 	@Override
@@ -246,23 +272,23 @@ public class EntityDeathLiving extends Entity implements IInventory
 	{
 		return false;
 	}
-//
-//	@Override
-//	public int[] getAccessibleSlotsFromSide(int p_94128_1_)
-//	{
-//		return new int[]{};
-//	}
-//
-//	@Override
-//	public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_,int p_102007_3_)
-//	{
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean canExtractItem(int p_102008_1_, ItemStack p_102008_2_, int p_102008_3_)
-//	{
-//		return false;
-//	}
+
+	@Override
+	public int[] getAccessibleSlotsFromSide(int p_94128_1_)
+	{
+		return new int[]{};
+	}
+
+	@Override
+	public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_,int p_102007_3_)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int p_102008_1_, ItemStack p_102008_2_, int p_102008_3_)
+	{
+		return false;
+	}
 	
 }

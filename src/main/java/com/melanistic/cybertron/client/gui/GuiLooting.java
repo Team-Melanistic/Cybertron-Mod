@@ -1,15 +1,7 @@
 package com.melanistic.cybertron.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
-import com.melanistic.cybertron.common.entity.EntityDeathLiving;
-import com.melanistic.cybertron.lib.CyberTecHandler;
-
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,8 +9,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import org.lwjgl.opengl.GL11;
+
+import com.melanistic.cybertron.common.entity.EntityDeathLiving;
 
 public class GuiLooting extends GuiContainer
 {

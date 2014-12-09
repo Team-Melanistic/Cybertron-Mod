@@ -5,22 +5,17 @@ import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 
-import com.melanistic.cybertron.client.render.entity.RenderHumanBorg;
 import com.melanistic.cybertron.common.CyberCommonProxy;
 import com.melanistic.cybertron.common.entity.EntityDeathLiving;
-import com.melanistic.cybertron.common.entity.EntityHumanborg;
-import com.melanistic.cybertron.common.entity.EntitySkeletron;
 import com.melanistic.cybertron.lib.CyberGuiHandler;
 import com.melanistic.cybertron.lib.CyberReference;
 import com.melanistic.cybertron.lib.CyberTecHandler;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -30,9 +25,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = CyberReference.MODID, name = CyberReference.MODNAME, version = CyberReference.VERSION)
 public class Cybertron 

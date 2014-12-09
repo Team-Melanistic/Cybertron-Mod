@@ -1,15 +1,8 @@
 package com.melanistic.cybertron.client.render.entity;
 
-import org.lwjgl.opengl.GL11;
-
-import com.melanistic.cybertron.client.render.ModelCarrier;
-import com.melanistic.cybertron.common.entity.EntityCarrier;
-
 import net.minecraft.block.Block;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
@@ -22,6 +15,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import org.lwjgl.opengl.GL11;
+
+import com.melanistic.cybertron.client.render.ModelCarrier;
 
 public class RenderCarrier extends RenderLiving
 {
