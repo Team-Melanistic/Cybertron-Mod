@@ -1,6 +1,8 @@
 package com.melanistic.cybertron.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -41,8 +43,28 @@ public class GuiLooting extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) 
 	{
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		fontRendererObj.drawString(live.getInventoryName(), 8, 6, 0x000000);
 		fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, 130, 0x000000);
+	}
+	
+	@Override
+	public void drawScreen(int x, int y, float p_73863_3_)
+	{
+		super.drawScreen(x, y, p_73863_3_);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		//GL11.glPushMatrix();
+		int k = (this.width - this.xSize) / 2;
+		int l = (this.height - this.ySize) / 2;
+		GL11.glTranslated(k+32, l+83, 0);
+		GL11.glRotatef(-90F, 0, 0, 1);
+		//GL11.glRotatef(-45F, 1, 0, 0);
+		boolean lb = live.living.isDead;
+		live.living.isDead = false;
+		GuiInventory.func_147046_a(0, 0, 22, -20, -10, live.living);
+		live.living.isDead = lb;
+		//GL11.glPopMatrix();
+		
 	}
 	
 	public static class ContainerLooting extends Container

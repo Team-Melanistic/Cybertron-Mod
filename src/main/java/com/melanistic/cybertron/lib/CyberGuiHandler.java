@@ -17,10 +17,7 @@ public class CyberGuiHandler implements IGuiHandler
 	private static Map<Integer, Class<? extends Container>> serverGui = new HashMap<Integer, Class<? extends Container>>();
 	private static Map<Integer, Class<? extends GuiScreen>> clientGui = new HashMap<Integer, Class<? extends GuiScreen>>();
 	
-	static
-	{
-		put(1, GuiLooting.ContainerLooting.class, GuiLooting.class);
-	}
+	
 	private static void put(int id, Class<? extends Container> serverClass, Class<? extends GuiScreen> clientClass)
 	{
 		serverGui.put(id, serverClass);
@@ -61,5 +58,14 @@ public class CyberGuiHandler implements IGuiHandler
 			}
 		}
 		return null;
+	}
+	
+	
+	public static final int GuiLooting = 1;
+	
+	
+	static
+	{
+		put(GuiLooting, GuiLooting.ContainerLooting.class, GuiLooting.class);
 	}
 }

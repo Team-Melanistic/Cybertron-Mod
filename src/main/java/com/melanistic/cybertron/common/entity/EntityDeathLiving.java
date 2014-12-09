@@ -10,18 +10,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import com.melanistic.cybertron.Cybertron;
+import com.melanistic.cybertron.lib.CyberGuiHandler;
 
 public class EntityDeathLiving extends Entity implements ISidedInventory
 {
 	public EntityLivingBase living = null;
 	public int deathTime = 0;
 	ItemStack[] items= new ItemStack[18];
+	boolean sametype = true;
 	
 	public EntityDeathLiving(EntityLivingBase base) 
 	{
@@ -100,13 +103,35 @@ public class EntityDeathLiving extends Entity implements ISidedInventory
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound nbt)
 	{
-		
+		if(sametype)
+		{
+			deathTime = nbt.getInteger("deathTime");
+			this.dataWatcher.updateObject(5, nbt.getString("living"));
+			NBTTagList list = nbt.getTagList("items", 10);
+			for(int i=0;i<list.tagCount();i++)
+			{
+				NBTTagCompound tag = list.getCompoundTagAt(i);
+				items[tag.getInteger("pos")] = ItemStack.loadItemStackFromNBT(tag);
+			}
+		}
 	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound nbt)
 	{
-		
+		nbt.setInteger("deathTime", deathTime);
+		nbt.setString("living", this.dataWatcher.getWatchableObjectString(5));
+		NBTTagList list = new NBTTagList();
+		for(int i=0;i<items.length;i++)
+		{
+			if(items[i]!=null)
+			{
+				NBTTagCompound tag = new NBTTagCompound();
+				items[i].writeToNBT(tag);
+				tag.setInteger("pos", i);
+			}
+		}
+		nbt.setTag("items", list);
 	}
 	
 	@Override
@@ -157,10 +182,18 @@ public class EntityDeathLiving extends Entity implements ISidedInventory
 	@Override
 	public boolean interactFirst(EntityPlayer pl)
 	{
-		pl.openGui(Cybertron.instance, 1, worldObj, getEntityId(), 0, 0);
+		pl.openGui(Cybertron.instance, CyberGuiHandler.GuiLooting, worldObj, getEntityId(), 0, 0);
 		return true;
 	}
 
+	@Override
+	public void copyDataFrom(Entity e, boolean b)
+	{
+		this.sametype = b;
+		super.copyDataFrom(e, b);
+		this.sametype = true;
+    }
+	
 	@Override
 	public int getSizeInventory()
 	{
